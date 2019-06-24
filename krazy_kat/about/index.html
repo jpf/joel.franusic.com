@@ -118,7 +118,7 @@ click on the "Comics" link above.</p>
 <p>I hope that by being able to read the comics online, you'll be
 inspired to buy one of the reprints from Fantagraphics. Krazy Kat is
 best appreciated in the medium it was designed for and the books that
-Fantragraphics publishes are a delight. You can find the books that I
+Fantagraphics publishes are a delight. You can find the books that I
 recommend in the "Buy" section of this site.</p>
 <p>What follows below is a detailed description of the code I wrote to
 find the Krazy Kat comics in newspaper archives. I also wrote my
@@ -138,7 +138,7 @@ that I found.</p>
 <p>This was done in several stages:</p>
 <ul>
 <li>Learning about Krazy Kat</li>
-<li>Discussing feasability of the project with an ML expert</li>
+<li>Discussing feasibility of the project with an ML expert</li>
 <li>Searching for archives that contain Krazy Kat Sunday comics</li>
 <li>Writing code to download thumbnails from newspaper archives</li>
 <li>Training an image classifier</li>
@@ -149,7 +149,7 @@ that I found.</p>
 <p>I go into detail on each of those stages in the sections below:</p>
 <h3>Learning about Krazy Kat</h3>
 <p>If it were not for a chance encounter with <a href="https://amzn.to/2Wx1yH9">Krazy Kat and The Art
-of George Herriman</a> at <a href="https://www.pegasusbookstore.com/shattuck-avenue">Pegasus Books</a> I wouldn't be familar with the
+of George Herriman</a> at <a href="https://www.pegasusbookstore.com/shattuck-avenue">Pegasus Books</a> I wouldn't be familiar with the
 series myself.</p>
 <p>The reason I picked up the book in the first place is because the
 comic strip Calvin and Hobbes was such a big part of my childhood,
@@ -159,7 +159,7 @@ his Sunday comic strips.</p>
 I started to buy the fantastic books from Fantagraphics. However,
 as stated above, I felt frustrated that some of the books so
 expensive.</p>
-<h3>Discussing feasability of the project with an ML expert</h3>
+<h3>Discussing feasibility of the project with an ML expert</h3>
 <p>The real genesis of this project however, was a conversation I had
 with <a href="http://tylerneylon.com/">Tyler Neylon</a> about one of the projects he was working on at
 <a href="http://unboxresearch.com/">Unbox Research</a> a machine learning research &amp; development company.</p>
@@ -169,7 +169,7 @@ learning to help me find Krazy Kat images was the most interesting
 of the things that we discussed.</p>
 <h3>Searching for archives that contain Krazy Kat Sunday comics</h3>
 <p>Before I could get started with machine learning, I had to see if
-the idea was feasable at all, were there any newspaper archives
+the idea was feasible at all, were there any newspaper archives
 online that had Krazy Kat comics?</p>
 <p>Many of the newspapers that I initially checked didn't have any
 trace of Krazy Kat. I was starting to get worried until I found
@@ -179,7 +179,7 @@ Library keeps online. This was exciting!</p>
 <p>It's fortunate that I found the Chicago Examiner archive as soon
 as I did, because it turns out that it's not very easy to find
 newspapers with Krazy Kat Sunday comics in them!</p>
-<p>After many hours of frustrating reasearch, I was finally able to
+<p>After many hours of frustrating research, I was finally able to
 narrow determine that Krazy Kat Sunday comics are available from the
 following sources:</p>
 <p><strong>Sunday comics:</strong></p>
@@ -210,7 +210,7 @@ find daily Krazy Kat comics:</p>
 <li>The Lincoln Star (1920)</li>
 </ul>
 <h3>Writing code to download thumbnails from newspaper archives</h3>
-<p>Once I had sources for newpaper scans, my next step was to
+<p>Once I had sources for newspaper scans, my next step was to
 download thumbnails from the archives I found. The main reason to
 use thumbnails over full sized images is that the average size of
 a thumbnail is about 4KiB while the size of a full
@@ -225,7 +225,7 @@ fetching images than others. Surprisingly, the internal API that
 Newspapers.com uses for their archives was the easiest to use. </p>
 <p>I ended up writing several different Python scripts to download
 each thumbnail collection individually. After seeing the
-similiarites between them, I decided to put all the logic together
+similarities between them, I decided to put all the logic together
 into a single Python package called "krazy.py" using this package,
 we can get a list of all thumbnails from known newspaper archives
 with code like this:</p>
@@ -254,10 +254,10 @@ Sunday pages, using the <code>.sunday-pages()</code> method:</p>
 <p>This code in turn will call the "Finders" for the Newspapers.com,
 Library of Congress, and Chicago Public Library archives. </p>
 <p>All of these classes implement the base "Source" class, which
-contains some syntatic sugar that makes working with all of the
+contains some syntactic sugar that makes working with all of the
 different finders a little easier. One thing to note is that these
 classes are written to make it easy to convert between the URL
-for a full size image <code>full_size</code>, the URL for the corrisponding
+for a full size image <code>full_size</code>, the URL for the corresponding
 thumbnail image <code>thumbnail</code>, and the
 suggested local filename for that same image <code>suggested_name</code>.</p>
 <p>Here's what all the code above looks like in a single file:</p>
@@ -267,7 +267,10 @@ proxies = {
   'http': 'http://localhost:3030',
 }
 
-
+finder = krazy.Finder(proxies=proxies)
+finder.add(krazy.NewspapersCom)
+finder.add(krazy.LocGov)
+finder.add(krazy.ChipublibOrg)
 
 for page in finder.sunday_pages():
     print('get-thumbnails.py {}'.format(page))
@@ -465,7 +468,7 @@ to use TensorFlow. However, after about 4 frustrating hours of
 trying to get TensorFlow, Karas, or PyTorch running, I just gave
 up.</p>
 <p>Most frustrating of all was <code>Illegal instruction: 4</code> error message
-that I kept gettting from TensorFlow. Apparently the Mac I use at
+that I kept getting from TensorFlow. Apparently the Mac I use at
 home is too old for modern versions of TensorFlow?</p>
 <p>In any event, thanks to a <a href="https://twitter.com/TimothyFitz/status/1126666574155386881">suggestion from my friend Timothy Fitz</a>,
 who suggested that I use Google's Auto ML. I realized that I could
@@ -491,12 +494,12 @@ on improving the rate at which it correctly recognized thumbnails
 with Krazy Kat. An interesting part of this exercise is that I
 ended up feeling like I was doing "meta-programming" rather than
 looking for patterns myself, I just spent more time finding thumbnails
-that appeard to have Krazy Kat, but didn't.</p>
+that appeared to have Krazy Kat, but didn't.</p>
 <p>One word of warning, using the  "Advanced Training" option costs
 money and it's not clear how much the training will cost. I ended
 up spending just over $180 on Advanced Training before I realized
 how much I had spent! </p>
-<h3>Using the image classifier to find candiates in loc archive</h3>
+<h3>Using the image classifier to find candidates in Library of Congress archive</h3>
 <p>Once I was fairly confidant with the image classification model
 that Custom Vision made, it was time to test it out in the real
 world.</p>
@@ -506,7 +509,7 @@ my computer. My main concern was that I didn't want to upload each
 thumbnail to Custom Vision. However, given how much trouble I had
 getting TensorFlow working, I decided to use Custom Vision's API
 directly. I was very pleased to learn that the API could take the
-URL for an image as an option, meaning that I could hve Custom
+URL for an image as an option, meaning that I could have Custom
 Vision fetch the thumbnails directly from the newspaper fetch!</p>
 <p>I wrote two "one off" scripts to make use of the Custom Vision
 API:</p>
@@ -527,7 +530,7 @@ about another couple of hundred thumbnails for Krazy Kat Sunday comics.</p>
 <p>Thanks to the Custom Vision API, I finally had several hundred
 thumbnails on my computer. All of these thumbnails were tagged
 "Green" and had unique names that I could use to find their
-corrisponding full size image.</p>
+corresponding full size image.</p>
 <p>Because they were all tagged "Green", I could use the <code>mdfind</code>
 command in macOS to get a list of all the thumbnails I'd found.</p>
 <p>This is the command I used to get all of the tagged thumbnails:</p>
@@ -595,7 +598,7 @@ and let me know!</p>
 <p>Whew! At this point, I had a lot of Krazy Kat comics, but I still
 had a sneaking suspecion that I had somehow missed some Krazy Kat
 comics that were already online.</p>
-<p>Well, it turns out that my suspecions were well founded, because I
+<p>Well, it turns out that my suspicions were well founded, because I
 found comics in three other sources:</p>
 <ol>
 <li>Wikipedia, which hosts quite a few comics in the Wikimedia Commons</li>
@@ -623,13 +626,13 @@ have time to do:</p>
 <h2>Things I wish I could have done</h2>
 <ul>
 <li>
-<p>Train an image classifier to recognize the comic boundries</p>
+<p>Train an image classifier to recognize the comic boundaries</p>
 <p>I included the full newspaper scans on this site because I didn't
 want to crop all of those images by hand, and also because that's
 a job that a good image classifier could do automatically?</p>
 </li>
 <li>
-<p>Train an image classifer that can find all types of comics</p>
+<p>Train an image classifier that can find all types of comics</p>
 <p>I was only interested in Krazy Kat comics that were published on
 Sunday. In the process of manually looking through the archives, I
 ran across many other interesting comics that I would have liked
@@ -653,7 +656,7 @@ investigating.</p>
 looked into myself:</p>
 <ul>
 <li>
-<p>Write code to detect and correct stippiling</p>
+<p>Write code to detect and correct stippling</p>
 <p>When you compare an original Krazy Kat print with what was
 published in a newspaper, you can see that George Herriman
 scribbled in areas where he wanted the newspapers to insert
@@ -673,7 +676,7 @@ worked, it would mean that we could have much higher quality
 prints of comics.</p>
 </li>
 <li>
-<p>Color and constrast correction</p>
+<p>Color and contrast correction</p>
 <p>All of the scans have different contrast levels, all of them have
 different shades of white. It would have been nice to
 automatically correct contrast and color on the scans.</p>
@@ -714,7 +717,7 @@ also liked to have converted the comics to other formats, for example:</p>
 </li>
 </ul>
 <h2>Recommendations for newspaper archivists</h2>
-<p>If you work for a newspaper archive, here is my wishlist for what I
+<p>If you work for a newspaper archive, here is my wish list for what I
 would have loved to have had in some or all of the newspaper archives I worked with:</p>
 <ul>
 <li>An easy way to search for specific days of the week (Sunday in particular)</li>
@@ -726,7 +729,7 @@ would have loved to have had in some or all of the newspaper archives I worked w
 <li>
 <p>Make better quality thumbnails</p>
 <p>If the quality of a thumbnail image is high enough, you don't
-need to fetch any aditional images.</p>
+need to fetch any additional images.</p>
 <p>For what it's worth, of all the thumbnails that I saw, those
 from the <a href="http://digital.chipublib.org/digital/collection/examiner/">Chicago Public Library's archive of the Chicago Examiner</a>
 were the best.</p>
@@ -747,14 +750,14 @@ my high level advice:</p>
 from the following people and institutions:</p>
 <ul>
 <li><a href="http://tylerneylon.com/">Tyler Neylon</a> at <a href="http://unboxresearch.com/">Unbox Research</a> for the inspiration</li>
-<li><a href="https://www.linkedin.com/in/tanner-gilligan-36952761/">Tanner Gilligan</a> for advice on the feasability
+<li><a href="https://www.linkedin.com/in/tanner-gilligan-36952761/">Tanner Gilligan</a> for advice on the feasibility
     of using thumbnails as well as advice on how many thumbnails I'd
     likely need to train a classifier.</li>
 <li><a href="http://timothyfitz.com/">Timothy Fitz</a> for <a href="https://twitter.com/TimothyFitz/status/1126666574155386881">the idea to use Google AutoML Vision
     Classification</a> (which inspired me to try that approach and use
     Microsoft's Custom Vision product instead)</li>
-<li>The team behind Microsoft's <a href="https://www.customvision.ai/">Cusom Vision</a> product for building a great tool!</li>
-<li><a href="https://www.kennethreitz.org/">Kennith Reitz</a> for <a href="https://2.python-requests.org/en/master/">Requests</a></li>
+<li>The team behind Microsoft's <a href="https://www.customvision.ai/">Custom Vision</a> product for building a great tool!</li>
+<li><a href="https://www.kennethreitz.org/">Kenneth Reitz</a> for <a href="https://2.python-requests.org/en/master/">Requests</a></li>
 <li><a href="http://www.fantagraphics.com/">Fantagraphics</a> for their <a href="http://www.fantagraphics.com/series/krazy-and-ignatz/">amazing Krazy Kat books</a></li>
 <li>The <a href="http://digital.chipublib.org/digital/collection/examiner/">Chicago Public Library Digital Collections</a> the
     <a href="https://chroniclingamerica.loc.gov/">Chronicling America</a> archive from the Library of Congress, and
