@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="krazy kat">
+    <meta name="author" content="Joel Franusic">
+    <title>Krazy Kat Comics</title>
+
+    <link rel="icon"          href="/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/starter-template/"> -->
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.3.3/viewer.min.css" integrity="sha256-GwlqK2cLIEb9/MOFobdQWUXBptZvDErQYx9p8+i/R+M=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.3.3/viewer.min.js" integrity="sha256-HbGt1VfLgLmO0ijcdErzmGMo09XW5nfdLfGIFxokgVY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script> -->
+    <script>
+        // let llimages = document.getElementById('images');
+      	// lazyload(llimages);
+    </script>
+    <!-- FIXME: Move to .css file -->
+    <style>
+      div.day b {
+          display: block;
+      }
+
+      span.day {
+          font-weight: bold;
+      }
+
+      .viewer-title a {
+          color: #dce1e6;
+      }
+
+      div.day {
+          display: inline-block;
+          padding: 10px;
+          background-color: #f3f4ef;
+          margin: 8px;
+          border-color: black;
+          border: 1px;
+          border-style: groove;
+      }
+
+      div.product {
+          display: inline-block;
+          padding: 10px;
+          max-width: 230px;
+          text-align: center;
+      }
+
+      .icon img {
+      height: 20px;
+      margin: 5px;
+      }
+
+      a.has-link {
+          color: #555;
+      }
+      
+      img.product {
+          max-height: 300px;
+          max-width: 210px;
+          height:auto;
+          width:auto;
+      }
+
+      code {
+          color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Krazy Kat</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	<div class="navbar-nav">
+	  <a class="nav-item nav-link" href="/krazy_kat/">Comics <span class="sr-only">(current)</span></a>
+	  <a class="nav-item nav-link" href="/krazy_kat/buy/">Buy</a>
+	  <a class="nav-item nav-link active" href="/krazy_kat/about/">About</a>
+	</div>
+      </div>
+    </nav>
+    <main role="main" class="container">
+      <h1>Summary</h1>
+<p>This page goes into detail on how I used Machine Learning to find
+hundreds of Krazy Kat comics that are now in the public domain. </p>
+<p>As a result of this project, several hundred high resolution scans of
+Krazy Kat comics are now easily available online, including
+a comic that I couldn't find in any published book!</p>
+<p>What follows is a detailed description of what I did to find these
+comics in online newspaper archives.</p>
+<h1>About</h1>
+<p>After becoming a little obsessed with Krazy Kat, I was very
+disappointed to see many of the books I wanted were incredibly
+expensive. For example "Krazy &amp; Ignatz: The Complete Sunday Strips
+1916-1924" was selling on Amazon for nearly $600 and "Krazy &amp; Ignatz
+1922-1924: At Last My Drim Of Love Has Come True" was selling for
+nearly $90.</p>
+<p>At some point, I realized that the copyright for many of the comics
+that I was looking for has expired and that these public domain comics
+were likely available in online newspaper archives.</p>
+<p>So, driven a desire to obtain the "unobtainable" and mostly by
+curiosity to see  if it was possible, I set out to see if I could find
+public domain Krazy Kat Sunday comics in online newspaper archives.</p>
+<p>As you can see in the "Comics" section of this site, it <strong>is</strong> possible
+to find Krazy Kat comics in online newspaper archives and I've made
+all of the comics I could find viewable on this web page.</p>
+<p>If all you want to do is read Krazy Kat comics, I encourage you to
+click on the "Comics" link above.</p>
+<p>I hope that by being able to read the comics online, you'll be
+inspired to buy one of the reprints from Fantagraphics. Krazy Kat is
+best appreciated in the medium it was designed for and the books that
+Fantragraphics publishes are a delight. You can find the books that I
+recommend in the "Buy" section of this site.</p>
+<p>What follows below is a detailed description of the code I wrote to
+find the Krazy Kat comics in newspaper archives. I also wrote my
+recommendations for curators of newspaper archives, as well as my advice for
+for people who want to build upon, or replicate, my work.</p>
+<p>Finally, I close with a long list of things that I wish I could have
+done, in the hope that someone else will be inspired to do them.</p>
+<h2>How to find Krazy Kat comics in newspaper archives</h2>
+<p>In short, I wrote some programs in Python that downloaded
+thumbnails from various newspaper archives, manually found about
+100 Sunday comic strips from the thumbnails, used Microsoft's
+<a href="https://www.customvision.ai/">Custom Vision</a> service to train an image classifier to detect Krazy
+Kat comics in thumbnail images, used that classifier to find
+several hundred more thumbnails, then wrote some more code in
+Python to download high resolution images of all of the thumbnails
+that I found.</p>
+<p>This was done in several stages:</p>
+<ul>
+<li>Learning about Krazy Kat</li>
+<li>Discussing feasability of the project with an ML expert</li>
+<li>Searching for archives that contain Krazy Kat Sunday comics</li>
+<li>Writing code to download thumbnails from newspaper archives</li>
+<li>Training an image classifier</li>
+<li>Using the image classifier to find more thumbnails</li>
+<li>Writing code to download full size images</li>
+<li>Finding comics in other online archives</li>
+</ul>
+<p>I go into detail on each of those stages in the sections below:</p>
+<h3>Learning about Krazy Kat</h3>
+<p>If it were not for a chance encounter with <a href="https://amzn.to/2Wx1yH9">Krazy Kat and The Art
+of George Herriman</a> at <a href="https://www.pegasusbookstore.com/shattuck-avenue">Pegasus Books</a> I wouldn't be familar with the
+series myself.</p>
+<p>The reason I picked up the book in the first place is because the
+comic strip Calvin and Hobbes was such a big part of my childhood,
+and I remembered how <a href="https://en.wikipedia.org/wiki/Calvin_and_Hobbes#Sunday_formatting">Bill Watterson referenced Krazy Kat as a big reason why he insisted on getting a larger full color format</a> for
+his Sunday comic strips.</p>
+<p>Once I finished reading "Krazy Kat and The Art of George Herriman"
+I started to buy the fantastic books from Fantagraphics. However,
+as stated above, I felt frustrated that some of the books so
+expensive.</p>
+<h3>Discussing feasability of the project with an ML expert</h3>
+<p>The real genesis of this project however, was a conversation I had
+with <a href="http://tylerneylon.com/">Tyler Neylon</a> about one of the projects he was working on at
+<a href="http://unboxresearch.com/">Unbox Research</a> a machine learning research &amp; development company.</p>
+<p>Speaking with Tyler got me thinking about the types of projects I
+could use machine learning with, and the idea of using machine
+learning to help me find Krazy Kat images was the most interesting
+of the things that we discussed.</p>
+<h3>Searching for archives that contain Krazy Kat Sunday comics</h3>
+<p>Before I could get started with machine learning, I had to see if
+the idea was feasable at all, were there any newspaper archives
+online that had Krazy Kat comics?</p>
+<p>Many of the newspapers that I initially checked didn't have any
+trace of Krazy Kat. I was starting to get worried until I found
+the
+<a href="http://digital.chipublib.org/digital/collection/examiner/search">archive of the Chicago Examiner (1908-1918)</a> that the Chicago Public
+Library keeps online. This was exciting!</p>
+<p>It's fortunate that I found the Chicago Examiner archive as soon
+as I did, because it turns out that it's not very easy to find
+newspapers with Krazy Kat Sunday comics in them!</p>
+<p>After many hours of frustrating reasearch, I was finally able to
+narrow determine that Krazy Kat Sunday comics are available from the
+following sources:</p>
+<p><strong>Sunday comics:</strong></p>
+<ul>
+<li>The Chicago Examiner via the Chicago Public Library</li>
+<li>The Washington Times via the excellent "Chronicling America"
+    archive at the Library of Congress</li>
+<li>Newspapers.com</li>
+<li>HA.com</li>
+</ul>
+<p>In the process of looking for Sunday comics, I was also able to
+find several newspapers in various archives that also have copies
+of the daily Krazy Kat comics. However, given a self-imposed
+deadline I set for myself, I didn't have the time to do anything
+other than make a list of newspapers that have the dailies. Below
+is a list of newspaper archives and the year that I was able to
+find daily Krazy Kat comics:</p>
+<p><strong>Daily comics:</strong></p>
+<ul>
+<li>The St. Louis Star and Times (1913)</li>
+<li>The Oregon Daily Journal (1914)</li>
+<li>The Lincoln Star (1919)</li>
+<li>El Paso Herald (1919)</li>
+<li>The San Francisco Examiner (1920)</li>
+<li>Salt Lake Telegram (1920)</li>
+<li>The Pittsburgh Press (1920)</li>
+<li>The Minneapolis Star (1920)</li>
+<li>The Lincoln Star (1920)</li>
+</ul>
+<h3>Writing code to download thumbnails from newspaper archives</h3>
+<p>Once I had sources for newpaper scans, my next step was to
+download thumbnails from the archives I found. The main reason to
+use thumbnails over full sized images is that the average size of
+a thumbnail is about 4KiB while the size of a full
+resolution scan can be nearly 7 MiB! I was also very curious if I
+could detect Krazy Kat comics using only thumbnails.</p>
+<p>In general, my specific goal for each of the newspaper archives
+was to download as many thumbnails as I could from Sunday editions
+published before 1923 (as of 2019, works published before 1923 are
+in the public domain)</p>
+<p>Some of the newspaper archives had better APIs for finding and
+fetching images than others. Surprisingly, the internal API that
+Newspapers.com uses for their archives was the easiest to use. </p>
+<p>I ended up writing several different Python scripts to download
+each thumbnail collection individually. After seeing the
+similiarites between them, I decided to put all the logic together
+into a single Python package called "krazy.py" using this package,
+we can get a list of all thumbnails from known newspaper archives
+with code like this:</p>
+<pre><code>import krazy
+
+proxies = {
+  'http': 'http://localhost:3030',
+}
+</code></pre>
+<p>This code has two parts. The first part handles registering of the
+different "Finders" that I implemented, which know how to find
+Sunday pages:</p>
+<pre><code>finder = krazy.Finder(proxies=proxies)
+finder.add(krazy.NewspapersCom)
+finder.add(krazy.LocGov)
+finder.add(krazy.ChipublibOrg)
+</code></pre>
+<p>And the second part will query all registered "Finders" for their
+Sunday pages, using the <code>.sunday-pages()</code> method:</p>
+<pre><code>for page in finder.sunday_pages():
+    print('get-thumbnails.py {}'.format(page))
+    print("\t thumbnail {}".format(page.thumbnail))
+    print("\t suggested {}".format(page.suggested_name))
+    print("\t full name {}".format(page.full_size))
+</code></pre>
+<p>This code in turn will call the "Finders" for the Newspapers.com,
+Library of Congress, and Chicago Public Library archives. </p>
+<p>All of these classes implement the base "Source" class, which
+contains some syntatic sugar that makes working with all of the
+different finders a little easier. One thing to note is that these
+classes are written to make it easy to convert between the URL
+for a full size image <code>full_size</code>, the URL for the corrisponding
+thumbnail image <code>thumbnail</code>, and the
+suggested local filename for that same image <code>suggested_name</code>.</p>
+<p>Here's what all the code above looks like in a single file:</p>
+<pre><code>import krazy
+
+proxies = {
+  'http': 'http://localhost:3030',
+}
+
+
+
+for page in finder.sunday_pages():
+    print('get-thumbnails.py {}'.format(page))
+    print("\t thumbnail {}".format(page.thumbnail))
+    print("\t suggested {}".format(page.suggested_name))
+    print("\t full name {}".format(page.full_size))
+</code></pre>
+<p>With that in mind, let's start with the code for getting Sunday pages from the
+Newspapers.com archives. This code was pretty easy to write, I
+calculate all the dates that have Sundays, then query the
+Newspapers.com API for the pages for that date.</p>
+<pre><code>class NewspapersCom(Source):
+    source_id = 'newspapers.com'
+    url_template = 'https://www.newspapers.com/download/image/?type=jpg&amp;id={id}'
+
+    @property
+    def _sundays(self):
+        start_day = '1916-04-23'
+        end_year = 1924
+        date = datetime.datetime.strptime(start_day, '%Y-%m-%d')
+        sundays = []
+        while date.year &lt; end_year:
+            if date.strftime('%A') == 'Sunday':
+                yield date
+            date += datetime.timedelta(days=7)
+
+    def sunday_pages(self):
+        urls = [
+            'http://www.newspapers.com/api/browse/1/US/California/San%20Francisco/The%20San%20Francisco%20Examiner_9317',
+            'http://www.newspapers.com/api/browse/1/US/District%20of%20Columbia/Washington/The%20Washington%20Times_1607'
+        ]
+        for url in urls:
+            for day in self._sundays:
+                day_path = day.strftime('/%Y/%m/%d')
+                rv = self.session.get(url + day_path).json()
+                if 'children' not in rv:
+                    continue
+                for page in rv['children']:
+                    self._parts = [
+                        self.source_id,
+                        day.strftime('%Y'),
+                        day.strftime('%m'),
+                        day.strftime('%d'),
+                        'id',
+                        page['name']
+                    ]
+                yield self
+</code></pre>
+<p>This is the code for getting Sunday pages from the Library of
+Congress archives. In this case, I actually take advantage of a
+search query for "krazy kat" and return all of those pages. I did
+this because the Library of Congress archive was what I first
+started with. If I wrote this again, I'd implement it without a search.</p>
+<pre><code>class LocGov(Source):
+    source_id = 'chroniclingamerica.loc.gov'
+    file_suffix = '.jp2'
+    _base_url = 'http://' + source_id
+    from_page_template = _base_url + '/lccn/{lccn}/{date}/ed-{ed}/seq-{seq}'
+    _search_url = _base_url + '/search/pages/results/'
+    url_template = from_page_template + file_suffix
+
+    def sunday_pages(self):
+        search_payload = {
+            'date1': '1913',
+            'date2': '1944',
+            'proxdistance': '5',
+            'proxtext': 'krazy+herriman',
+            'sort': 'relevance',
+            'format': 'json'
+        }
+        results_seen = 0
+        page = 1
+        urls = []
+        while True:
+            search_payload['page'] = str(page)
+            # print('Fetching page {}'.format(page))
+            result = self.session.get(self._search_url, params=search_payload).json()
+            for item in result['items']:
+                results_seen += 1
+                url = item['url']
+                if url:
+                    yield self._bootstrap_from_url(item['url'])
+            if(results_seen &lt; result['totalItems']):
+                page += 1
+            else:
+                # print('Found {} items'.format(results_seen))
+                break
+</code></pre>
+<p>And finally, here is the code for getting Sunday pages from the
+Chicago Public Library archives. As you can see, this is pretty
+involved. The supporting cast in this object are the <code>_url</code>
+method, which creates URLs for the Chicago Public Library API, and
+the <code>_bootstrap_from_url</code> method, which creates an instance of a
+<code>ChipublibOrg</code> object.</p>
+<p><code>_url</code> and <code>_bootstrap_from_url</code> are then used by the
+<code>sunday_pages</code> method to return objects representing Sunday pages
+from the Chicago Public Library archive.</p>
+<pre><code>class ChipublibOrg(Source):
+    source_id = 'digital.chipublib.org'
+    _base_url = 'http://' + source_id
+    _full_size_url = _base_url + '/digital/download/collection/examiner/id/{id}/size/full'
+    _thumbnail_url = _base_url + '/digital/api/singleitem/collection/examiner/id/{id}/thumbnail'
+    _info_url      = _base_url + '/digital/api/collections/{collection}/items/{id}/false'
+    url_template = _full_size_url
+
+    _chipublib_defaults = [
+        ('collection', 'examiner'),
+        ('order', 'date'),
+        ('ad', 'dec'),
+        ('page', '1'),
+        ('maxRecords', '100'),
+        ]
+
+    def _url(self, **inputs):
+        options = OrderedDict(self._chipublib_defaults)
+        for key in inputs:
+            if key in options:
+                value = inputs[key]
+                if isinstance(value, int):
+                    value = str(value)
+                options[key] = value
+        path = '/'.join(itertools.chain.from_iterable(options.items()))
+        search_url = 'http://{source_id}/digital/api/search/{path}'.format(source_id=self.source_id, path=path)
+        return search_url
+
+    def _bootstrap_from_id(self, item_id):
+        defaults = dict(self._chipublib_defaults)
+        values = {'id': item_id, 'collection': defaults['collection']}
+        url = self._info_url.format(**values)
+        # print('url: ' + url)
+        result = self.session.get(url).json()
+        fields = dict([(field['key'], field['value']) for field in result['fields']])
+        for child in result['parent']['children']:
+            page_number = child['title'].split(' ')[1]
+            # digital.chipublib.org-examiner-1917-12-16-page-34-item-88543
+            self._parts = [self.source_id, defaults['collection']]
+            self._parts.extend(fields['date'].split(self.sep))
+            self._parts.extend(['page', str(page_number), 'item', str(child['id'])])
+            yield self
+
+    def sunday_pages(self):
+        resultsSeen = 0
+        page = 1
+        while True:
+            result = self.session.get(self._url(page=page)).json()
+            for record in result['items']:
+                resultsSeen += 1
+
+                metadata = dict([(item['field'], item['value']) for item in record['metadataFields']])
+                record_date = datetime.datetime.strptime(metadata['date'], '%Y-%m-%d')
+                # Krazy Kat ... a comic strip by cartoonist George Herriman, ... ran from 1913 to 1944.
+                if record_date.year &lt; 1913:
+                    continue
+                if record_date.strftime('%A') != 'Sunday':
+                    continue
+                item_id = record['itemId']
+
+                for page in self._bootstrap_from_id(item_id):
+                    yield page
+
+            if(resultsSeen &lt; result['totalResults']):
+                page += 1
+            else:
+                break
+</code></pre>
+<h3>Visually confirming images</h3>
+<p>Once I was able to get a list of thumbnail image URLs, I wrote a
+script to download each of those thumbnails into a local file
+named using the <code>suggested_name()</code> for each thumbnail.</p>
+<p>For example, this URL:
+<code>http://digital.chipublib.org/digital/api/singleitem/collection/examiner/id/88888/thumbnail</code>
+would be saved as this file: <code>digital.chipublib.org-examiner-1917-12-30-page-31-item-88888.jpeg</code></p>
+<p>At this point, I had a folder full of thumbnail images, that looked
+something like this:</p>
+<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/finder-thumbnails.png" /></p>
+<p>Using Finder in macOS, I scanned over each image personally. When
+I found a thumbnail that looked like it contained Krazy Kat, I'd
+use the identifier in the filename to load up the full sized
+image. For example, if I thought that this thumbnail contained
+Krazy Kat:</p>
+<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/thumbnails-digital.chipublib.org-examiner-1917-12-30-page-31-item-88888.jpeg" /></p>
+<p>Then I would take the identifier from that filename (in this case
+"88888") and use that to load up the full sized image, which in
+this example would be this URL:
+<a href="http://digital.chipublib.org/digital/collection/examiner/id/88888">http://digital.chipublib.org/digital/collection/examiner/id/88888</a></p>
+<p>If the thumbnail did turn out to contain a Krazy Kat comic, then
+I'd tag the file in Finder. In my case, I tagged thumbnails for
+Krazy Kat comics with "Green", but the color doesn't matter.</p>
+<p>After tagging about 100 images, I was ready to learn to train a
+custom "image classifier" that I could use to find even more Krazy
+Kat comics for me.</p>
+<h3>Training an image classifier</h3>
+<p>Initially, my plan was to use this project as an excuse to learn
+to use TensorFlow. However, after about 4 frustrating hours of
+trying to get TensorFlow, Karas, or PyTorch running, I just gave
+up.</p>
+<p>Most frustrating of all was <code>Illegal instruction: 4</code> error message
+that I kept gettting from TensorFlow. Apparently the Mac I use at
+home is too old for modern versions of TensorFlow?</p>
+<p>In any event, thanks to a <a href="https://twitter.com/TimothyFitz/status/1126666574155386881">suggestion from my friend Timothy Fitz</a>,
+who suggested that I use Google's Auto ML. I realized that I could
+use a cloud service to train an image classifier instead.</p>
+<p>With that in mind, I decided to give Microsoft's
+<a href="https://www.customvision.ai/">Custom Vision</a> service instead. </p>
+<p>In short, Custom Vision is a wonderful service. It was easy to use
+and gave me exactly what I wanted.</p>
+<p>All I had to do to build an image classifier with Custom Vision
+was to upload the 100 or so thumbnails that I found with Krazy Kat
+sunday comics in them, tag those images "krazy" and then upload
+about 100 images that did <em>not</em> have Krazy Kat in them.</p>
+<p>To get the thumbnails I found with Krazy Kat, I simply made a
+"Smart Folder" in macOS that contained all images tagged "Green"</p>
+<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/finder-green-smart-folder.png" /></p>
+<p>I simply selected all of the images from the Smart Folder and
+dragged them into Custom Vision to upload them. After tagging
+those images as "krazy" I repeated the process to upload
+thumbnails that <em>didn't</em> have Krazy Kat and tagged those as
+"Negative"</p>
+<p>After that, I spent some time playing with Custom Vision, working
+on improving the rate at which it correctly recognized thumbnails
+with Krazy Kat. An interesting part of this exercise is that I
+ended up feeling like I was doing "meta-programming" rather than
+looking for patterns myself, I just spent more time finding thumbnails
+that appeard to have Krazy Kat, but didn't.</p>
+<p>One word of warning, using the  "Advanced Training" option costs
+money and it's not clear how much the training will cost. I ended
+up spending just over $180 on Advanced Training before I realized
+how much I had spent! </p>
+<h3>Using the image classifier to find candiates in loc archive</h3>
+<p>Once I was fairly confidant with the image classification model
+that Custom Vision made, it was time to test it out in the real
+world.</p>
+<p>Initially, I had hoped to use Custom Vision's ability to export
+TensorFlow models so I could run image classification locally on
+my computer. My main concern was that I didn't want to upload each
+thumbnail to Custom Vision. However, given how much trouble I had
+getting TensorFlow working, I decided to use Custom Vision's API
+directly. I was very pleased to learn that the API could take the
+URL for an image as an option, meaning that I could hve Custom
+Vision fetch the thumbnails directly from the newspaper fetch!</p>
+<p>I wrote two "one off" scripts to make use of the Custom Vision
+API:</p>
+<ol>
+<li><a href="https://gist.github.com/jpf/ee6edf11cba7d236fcc074c1e108d097">ms-predict.py</a>
+    This was the first script I wrote, which uploaded thumbnails to
+    the Custom Vision API. It's pretty simple and proved to me that
+    it the API worked.</li>
+<li><a href="https://gist.github.com/jpf/9cdc33632d83b3ce7e0361a1d732a55b">custom-vision-find-kats-loc.py</a>
+    This was the second script I wrote. I also implemented the
+    Custom Vision API because somehow I missed that they already
+    had a Python library. In any event, this script sent URLs to
+    the Custom Vision API</li>
+</ol>
+<p>Using a combination of both of these scripts, I was able to find
+about another couple of hundred thumbnails for Krazy Kat Sunday comics.</p>
+<h3>Writing code to download full size images</h3>
+<p>Thanks to the Custom Vision API, I finally had several hundred
+thumbnails on my computer. All of these thumbnails were tagged
+"Green" and had unique names that I could use to find their
+corrisponding full size image.</p>
+<p>Because they were all tagged "Green", I could use the <code>mdfind</code>
+command in macOS to get a list of all the thumbnails I'd found.</p>
+<p>This is the command I used to get all of the tagged thumbnails:</p>
+<pre><code>mdfind "kMDItemUserTags == Green"
+</code></pre>
+<p>And here is an example of what the output looked like:</p>
+<pre><code>$ mdfind "kMDItemUserTags == Green"
+...
+~/Projects/krazykat/fetch-kats/manual.thumbnails/chroniclingamerica.loc.gov-lccn-sn84026749-1922-12-31-ed-1-seq-49.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/chroniclingamerica.loc.gov-lccn-sn84026749-1922-05-14-ed-1-seq-49.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/chroniclingamerica.loc.gov-lccn-sn84026749-1922-04-16-ed-1-seq-50.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/chroniclingamerica.loc.gov-lccn-sn84026749-1922-03-05-ed-1-seq-50.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/chroniclingamerica.loc.gov-lccn-sn84026749-1922-02-12-ed-1-seq-29.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/chroniclingamerica.loc.gov-lccn-sn84026749-1922-01-29-ed-1-seq-27.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/digital.chipublib.org-examiner-1917-04-01-page-38-item-83144.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/digital.chipublib.org-examiner-1916-06-04-page-49-item-81637.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/digital.chipublib.org-examiner-1916-06-11-page-47-item-81884.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/digital.chipublib.org-examiner-1916-07-02-page-32-item-85927.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/digital.chipublib.org-examiner-1916-10-15-page-40-item-93726.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/digital.chipublib.org-examiner-1916-10-29-page-44-item-94073.jpeg
+~/Projects/krazykat/fetch-kats/manual.thumbnails/digital.chipublib.org-examiner-1917-02-11-page-31-item-89081.jpeg
+...
+</code></pre>
+<p>With a list of thumbnails to download, I used some code similar to
+the code below to take in a list of thumbnails and, using their
+names, determine the URL for the full size image and then download
+the full sized image:</p>
+<pre><code>import fileinput
+import krazy
+
+finder = krazy.Finder()
+finder.add(krazy.LocGov)
+# finder.add(NewspapersCom)
+finder.add(krazy.ChipublibOrg)
+
+for line in fileinput.input():
+    print(line)
+    img = finder.identify(line)
+    if not img:
+        continue
+    if img.source_id is 'newspapers.com':
+        img.headers = newspapers_headers
+        img.cookies = newspapers_cookies
+    # print(img.full_size)
+    finder.download(img)
+</code></pre>
+<p>This code looks simple because most of the logic is hidden in the
+<code>krazy</code> Python library that I wrote to abstract out the details.</p>
+<h3>Figuring out dates for comics</h3>
+<p>Once I had several hundred comics on my computer, my next task was
+to start collecting them together. In the early days of Krazy Kat,
+the dates on which comics were published was very erratic. I
+considered several approaches to identifying each comic: made up
+names, names that have to do with the contents of the comic,
+"perceptual hashing", and so on. Eventually I just decided to use
+the dates that Fantagraphics used in their books.</p>
+<p>Overall, this approach worked quite well. With one exception!
+One of the comics that I found, published on 1922-10-29, was not
+in any of the Fantagraphics books I looked in! I'm not sure why
+this is the case, but I suspect that the archive from which
+Fantagraphics used somehow didn't have this comic? I hope that
+someone will figure out the reason why I couldn't find the comic
+and let me know!</p>
+<h3>Finding comics in other online archives</h3>
+<p>Whew! At this point, I had a lot of Krazy Kat comics, but I still
+had a sneaking suspecion that I had somehow missed some Krazy Kat
+comics that were already online.</p>
+<p>Well, it turns out that my suspecions were well founded, because I
+found comics in three other sources:</p>
+<ol>
+<li>Wikipedia, which hosts quite a few comics in the Wikimedia Commons</li>
+<li><a href="https://www.comicstriplibrary.org/browse/results?title=1">The Comic Strip Library</a>, which has scans from books</li>
+<li><a href="https://comics.ha.com/">Heritage Auctions</a>, which has high resolution scans of original
+    Krazy Kat artwork</li>
+</ol>
+<p>From what I could tell, the Wikimedia Commons only had comics
+which were available elsewhere, so I skipped those. That said, I
+did put an effort into getting images from The Comic Strip Library
+and Heritage Auctions and included those images in the comic
+viewer on this site. I enjoy finding days where the same comic is
+available from several sources, since it's interesting to see how
+the comic changes when printed in different ways.</p>
+<h1>Suggestions for future work</h1>
+<p>I gave myself a month to complete this project, so I didn't
+investigate many of the interesting side-paths that appeared as I
+explored the world of comics in newspapers archives.</p>
+<p>Since you, dear reader, have  made it this far through this page,
+then I'm assuming that you're interested enough in the work I did to
+maybe build upon it?</p>
+<p>If you are indeed interested in working on a project in this space,
+here is a list of things I would have liked to have done, but didn't
+have time to do:</p>
+<h2>Things I wish I could have done</h2>
+<ul>
+<li>
+<p>Train an image classifier to recognize the comic boundries</p>
+<p>I included the full newspaper scans on this site because I didn't
+want to crop all of those images by hand, and also because that's
+a job that a good image classifier could do automatically?</p>
+</li>
+<li>
+<p>Train an image classifer that can find all types of comics</p>
+<p>I was only interested in Krazy Kat comics that were published on
+Sunday. In the process of manually looking through the archives, I
+ran across many other interesting comics that I would have liked
+to have extracted too. The Katzenjammer Kids and Winsor McCay's
+comics in particular.</p>
+</li>
+<li>
+<p>Train an image classifier that can find the daily Krazy Kat
+    comics</p>
+<p>From what I can tell, most of the daily Krazy Kat comics haven't
+been published. Doing this would allow the world to see thousands
+of new Krazy Kat comics.</p>
+</li>
+<li>
+<p>Investigate approaches to automatically restore comics</p>
+<p>Given that we have scans of original artwork available, as well as
+the ability to pull the same comic from several archives, doing
+automatic comic restoration seems like an approach that's worth
+investigating.</p>
+<p>Here are some of the approaches that I would have liked to have
+looked into myself:</p>
+<ul>
+<li>
+<p>Write code to detect and correct stippiling</p>
+<p>When you compare an original Krazy Kat print with what was
+published in a newspaper, you can see that George Herriman
+scribbled in areas where he wanted the newspapers to insert
+stippling. In the published comics, you can see that the scans of
+the comics have stippling that has been smudged or distorted.</p>
+<p>It should be possible to train a machine learning model to
+recognize stippling and correct any errant stipples that it
+finds.</p>
+</li>
+<li>
+<p>Try and build a Machine Learning model that could synthesize
+    original sketches</p>
+<p>Given how many original prints are available online, it might be
+possible to use Machine Learning to "dream up" what the original
+drawing for a comic might have looked like. If this approach
+worked, it would mean that we could have much higher quality
+prints of comics.</p>
+</li>
+<li>
+<p>Color and constrast correction</p>
+<p>All of the scans have different contrast levels, all of them have
+different shades of white. It would have been nice to
+automatically correct contrast and color on the scans.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Build a Krazy Kat API</p>
+<p>I would have liked to have made an API like
+<a href="https://swapi.co/">The Star Wars API</a> or the <a href="https://pokeapi.co/">PokeAPI</a> for Krazy Kat. I would have liked
+this API to have a list of all known comics, links to newspaper
+archives that held those comics, a list of who shows up in each
+comic, the text to the comics, and so on</p>
+</li>
+<li>
+<p>Make the image viewer a SPA</p>
+<p>It would have been cool to make the comic viewer a "Single Page
+App" that used a Krazy Kat API</p>
+</li>
+<li>
+<p>Figure out why the dates that Krazy Kat comics were published on
+    are so erratic</p>
+<p>It would have been nice to have done some more in-depth analysis
+into why various newspapers published Krazy Kat comics on
+different dates.</p>
+</li>
+<li>
+<p>Make Krazy Kat comics in the public domain available in other
+    formats</p>
+<p>If I had a way to automatically correct the color and contrast in
+comics, as well as have them automatically cropped, I would have
+also liked to have converted the comics to other formats, for example:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Comic_book_archive">Comic book archive</a></li>
+<li>PDF</li>
+<li>Kindle</li>
+</ul>
+</li>
+</ul>
+<h2>Recommendations for newspaper archivists</h2>
+<p>If you work for a newspaper archive, here is my wishlist for what I
+would have loved to have had in some or all of the newspaper archives I worked with:</p>
+<ul>
+<li>An easy way to search for specific days of the week (Sunday in particular)</li>
+<li>A clearer way to get thumbnails for pages.
+    In particular, I would have loved to be able to download an
+    entire collection of thumbnails at once.</li>
+<li>Use .jp2
+    It's JPEG with metadata. Why isn't everybody using this?</li>
+<li>
+<p>Make better quality thumbnails</p>
+<p>If the quality of a thumbnail image is high enough, you don't
+need to fetch any aditional images.</p>
+<p>For what it's worth, of all the thumbnails that I saw, those
+from the <a href="http://digital.chipublib.org/digital/collection/examiner/">Chicago Public Library's archive of the Chicago Examiner</a>
+were the best.</p>
+</li>
+</ul>
+<h2>Advice for building upon my work</h2>
+<p>If you're inspired by this work and want to build upon it, here is
+my high level advice:</p>
+<ul>
+<li>I kept a log with more detailed notes on what I did. Email me and
+    I'll send it to you!</li>
+<li>Try not to piss off archivists, use caching and thumbnails!</li>
+<li>Use file tagging to make your life easier</li>
+<li>I'm happy to share the training data I used with you, just ask!</li>
+</ul>
+<h1>Thanks</h1>
+<p>This project would have been a lot more difficult without the help
+from the following people and institutions:</p>
+<ul>
+<li><a href="http://tylerneylon.com/">Tyler Neylon</a> at <a href="http://unboxresearch.com/">Unbox Research</a> for the inspiration</li>
+<li><a href="https://www.linkedin.com/in/tanner-gilligan-36952761/">Tanner Gilligan</a> for advice on the feasability
+    of using thumbnails as well as advice on how many thumbnails I'd
+    likely need to train a classifier.</li>
+<li><a href="http://timothyfitz.com/">Timothy Fitz</a> for <a href="https://twitter.com/TimothyFitz/status/1126666574155386881">the idea to use Google AutoML Vision
+    Classification</a> (which inspired me to try that approach and use
+    Microsoft's Custom Vision product instead)</li>
+<li>The team behind Microsoft's <a href="https://www.customvision.ai/">Cusom Vision</a> product for building a great tool!</li>
+<li><a href="https://www.kennethreitz.org/">Kennith Reitz</a> for <a href="https://2.python-requests.org/en/master/">Requests</a></li>
+<li><a href="http://www.fantagraphics.com/">Fantagraphics</a> for their <a href="http://www.fantagraphics.com/series/krazy-and-ignatz/">amazing Krazy Kat books</a></li>
+<li>The <a href="http://digital.chipublib.org/digital/collection/examiner/">Chicago Public Library Digital Collections</a> the
+    <a href="https://chroniclingamerica.loc.gov/">Chronicling America</a> archive from the Library of Congress, and
+    <a href="https://www.newspapers.com/">newspapers.com</a>.</li>
+</ul>
+<h1>Full code listing</h1>
+<p>Below is the full code listing for the code in <code>krazy.py</code>:</p>
+<pre><code>from collections import OrderedDict
+import datetime
+import itertools
+import os
+import shutil
+import sys
+
+import requests
+from requests import Request
+from requests import Session
+
+
+newspapers_dates = {'80665811': '1922-01-08', '80689957': '1922-04-02', '80709570': '1922-07-02', '80725318': '1922-10-29', '80727456': '1922-12-31', '80726753': '1922-12-10', '80726259': '1922-11-26', '79961860': '1921-12-18', '79953764': '1921-12-04', '80670129': '1922-01-22', '79907475': '1921-10-02', '80705478': '1922-06-11', '80688098': '1922-03-26', '80673928': '1922-02-05', '80719993': '1922-09-24', '80721727': '1922-10-01', '80672004': '1922-01-29', '80664354': '1922-01-01', '80716571': '1922-08-27', '80701622': '1922-05-21', '80667982': '1922-01-15', '87593725': '1922-05-07', '79894942': '1921-09-04', '80704313': '1922-06-04', '80694291': '1922-04-16', '80685564': '1922-03-19', '80675323': '1922-02-12', '80725764': '1922-11-12', '80726016': '1922-11-19', '87594108': '1921-10-09', '80703107': '1922-05-28', '80700357': '1922-05-14', '79920320': '1921-10-23', '79926556': '1921-10-30', '80722923': '1922-10-08', '80713478': '1922-07-23', '80726503': '1922-12-03', '79890293': '1921-08-28', '79936055': '1921-11-13', '79957306': '1921-12-11', '79965938': '1921-12-25', '80724021': '1922-10-15', '80679279': '1922-02-26', '80677355': '1922-02-19', '79931806': '1921-11-06', '457887501': '1918-02-17', '457410714': '1918-10-13', '457486179': '1918-10-27', '457772423': '1917-11-25', '458059568': '1918-09-15', '458050238': '1918-12-29', '458077200': '1919-03-23', '457466753': '1917-07-29', '457770405': '1922-02-12', '458016697': '1919-08-03', '458038653': '1919-08-10', '458059136': '1919-08-17', '458077492': '1919-08-24', '458028215': '1919-09-07', '458041825': '1919-09-14', '458078329': '1919-09-28', '459426476': '1919-10-05', '459431409': '1919-10-12', '459439720': '1919-10-19', '459459432': '1919-10-26', '457500046': '1919-11-02', '457538069': '1919-11-09', '457568326': '1919-11-16', '457798935': '1922-05-07', '458112864': '1919-07-20', '457997191': '1919-06-29', '457981504': '1919-06-22', '457965904': '1919-06-15', '457949266': '1919-06-08', '457744406': '1919-05-25', '457713998': '1919-05-18', '457674936': '1919-05-11', '457638508': '1919-05-04', '458042002': '1919-04-27', '458017299': '1919-04-20', '458002234': '1919-04-13', '458088822': '1919-03-30', '458036405': '1919-03-02', '457826061': '1919-02-23', '457807708': '1919-02-16', '457783911': '1919-02-09', '457756906': '1919-02-02', '457734895': '1919-01-26', '457716429': '1919-01-19', '457689797': '1919-01-12', '458026097': '1918-12-22', '458005517': '1918-12-15', '457988045': '1918-12-08', '457972362': '1918-12-01', '457457766': '1918-11-24', '457432240': '1918-11-17', '458033338': '1918-09-01', '457456172': '1918-08-25', '459474336': '1918-07-28', '457842118': '1918-01-20', '457535192': '1917-12-30', '457479729': '1917-12-16', '457444762': '1917-12-09', '457412844': '1917-12-02', '457744171': '1917-11-18', '457716428': '1917-11-11', '457690452': '1917-11-04', '457999366': '1917-10-28', '457991489': '1917-10-21', '457982762': '1917-10-14', '457968714': '1917-10-07', '457789970': '1917-09-30', '457733519': '1917-09-16', '457691222': '1917-09-02', '457634671': '1917-08-19', '457611018': '1917-08-12', '457750102': '1920-02-22', '458018980': '1918-06-02', '458033403': '1918-06-09', '458069378': '1918-06-30', '457927118': '1919-06-01', '457397341': '1918-08-11', '457374766': '1918-08-04', '457402773': '1918-11-10', '458101599': '1919-07-13', '457652116': '1920-02-01', '457591813': '1920-03-07', '457707791': '1920-04-04', '458071940': '1918-09-22', '457374825': '1918-11-03', '458045487': '1918-09-08', '457419977': '1918-08-18', '457716141': '1918-07-14', '457756843': '1918-07-21', '457686530': '1918-07-07', '458055618': '1918-06-16', '458062639': '1918-06-23', '457913412': '1918-05-26', '457888648': '1918-05-19', '457865553': '1918-05-12', '457679991': '1918-04-28', '457847884': '1918-05-05', '457648693': '1918-04-21', '457614524': '1918-04-14', '457583278': '1918-04-07', '459521355': '1918-03-31', '459501540': '1918-03-24', '459478635': '1918-03-17', '459443573': '1918-03-03', '459458580': '1918-03-10', '457909624': '1918-02-24', '457864292': '1918-02-10', '457848649': '1918-01-27', '457830075': '1918-01-13', '457761784': '1917-09-23', '457668918': '1917-08-26'}
+
+comics_ha_dates = {'811-5025': '1910-00-00', '7013-93220': '1916-07-29', '7030-92126': '1916-08-06', '17074-16040': '1916-08-20', '18064-14821': '1916-08-20', '7087-92096': '1916-09-10', '18065-15773': '1917-00-00', '7158-92123': '1917-00-00', '817-5488': '1917-00-00', '7192-91012': '1917-03-25', '7079-92139': '1917-07-17', '18073-13574': '1917-07-29', '7023-93116': '1917-08-12', '828-42093': '1917-11-18', '826-43281': '1917-12-16', '815-3311': '1918-00-00', '829-41419': '1918-02-24', '7209-93108': '1918-03-03', '18071-11607': '1918-03-31', '802-6533': '1918-05-05', '18041-11763': '1918-05-19', '7066-92040': '1918-06-23', '18104-14546': '1918-07-21', '7017-94086': '1918-07-21', '18012-12649': '1918-08-11', '18072-12536': '1918-09-15', '828-42094': '1918-10-13', '17124-16682': '1918-10-20', '7104-91138': '1918-10-27', '7066-93239': '1918-11-10', '7177-92090': '1918-12-22', '826-43285': '1919-00-00', '7204-91025': '1919-01-26', '17113-17707': '1919-02-02', '17112-16758': '1919-03-09', '17123-17745': '1919-07-29', '7158-92201': '1919-08-10', '7209-93109': '1919-08-17', '17114-16855': '1919-10-19', '827-43303': '1919-10-26', '7093-92081': '1919-11-23', '17125-17685': '1919-12-21', '7066-92041': '1920-00-00', '825-41055': '1920-00-00', '826-43284': '1920-00-00', '17121-17588': '1920-02-01', '7137-92011': '1920-02-08', '18033-73672': '1920-02-22', '7189-92080': '1920-02-29', '7017-94087': '1920-03-28', '7136-92230': '1920-03-28', '7084-92159': '1920-05-02', '825-41056': '1920-06-20', '17122-16874': '1920-09-16', '7163-93102': '1920-11-07', '18032-72747': '1920-11-21', '7189-92081': '1920-11-28', '7166-92007': '1920-12-26', '17061-17710': '1921-01-30', '827-43304': '1921-03-06', '829-41420': '1921-03-20', '826-43282': '1921-03-27', '17093-16037': '1921-06-04', '18034-74684': '1921-10-30', '821-44248': '1921-11-06', '823-42313': '1921-11-20', '7054-92116': '1922-04-02', '826-43283': '1922-04-23', '7192-91013': '1922-04-30', '7141-93110': '1922-06-11', '7036-92119': '1922-06-25', '7076-92176': '1922-06-25', '18035-75757': '1922-07-09', '7163-93103': '1922-10-01', '823-42314': '1922-10-08', '825-41057': '1922-10-15', '7137-92012': '1922-11-19', '7204-91026': '1923-01-21', '7152-92103': '1926-05-02', '825-41058': '1928-10-28', '811-5026': '1931-12-27', '7104-91139': '1932-04-03', '7104-91140': '1932-07-31', '7084-92160': '1932-08-28', '7141-93111': '1932-10-16', '821-44249': '1932-12-25', '7079-92141': '1933-05-28', '7152-92104': '1933-05-28', '7013-93221': '1934-03-25', '810-1062': '1934-03-25', '7177-92006': '1934-05-27', '7104-91141': '1934-11-11', '7187-93125': '1935-11-03', '821-44247': '1935-11-10', '822-45259': '1936-00-00', '822-45258': '1936-01-19', '7158-92202': '1937-10-10', '7059-92175': '1937-12-12', '824-44179': '1938-02-06', '7023-93117': '1938-09-25', '7066-93238': '1940-02-11', '7189-92082': '1940-03-17', '7084-92161': '1941-05-04', '7139-92093': '1941-11-02', '7177-92091': '1942-05-03', '7036-92120': '1942-05-31', '7021-92108': '1942-08-30', '802-6535': '1942-12-06', '7099-92032': '1943-10-03', '814-6044': '1943-10-31', '7023-93119': '1944-06-25'}
+
+class Source:
+    sep = '-'
+    file_suffix = '.jpg'
+    date = None
+    from_page = None
+
+    def __init__(self, filename=None, session=None):
+        self._parts = []
+        if session:
+            # print('Setting session to: {}'.format(session))
+            self.session = session
+        if filename:
+            # Remove the file extension
+            name = os.path.splitext(filename)[0]
+            # self._parts = name.split(self.sep)[4:]
+            self._parts = name.split(self.sep)
+
+    @property
+    def id(self):
+        return(self.sep.join([self.source_id, self.identifier]))
+
+    @property
+    def identifier(self):
+        rv = None
+        if self._parts:
+            rv = self.sep.join(self._parts)
+        return(rv)
+
+    @property
+    def suggested_name(self):
+        return(self.identifier + self.file_suffix)
+
+    @property
+    def full_size(self):
+        return None
+
+    @property
+    def thumbnail(self):
+        return None
+
+    def request(self):
+        url = self.full_size
+        return(Request('GET', url).prepare())
+
+    def __repr__(self):
+        return('&lt;{} {}&gt;'.format(self.__class__.__name__, self.identifier))
+
+class LocGov(Source):
+    source_id = 'chroniclingamerica.loc.gov'
+    file_suffix = '.jp2'
+    _base_url = 'http://' + source_id
+    from_page_template = _base_url + '/lccn/{lccn}/{date}/ed-{ed}/seq-{seq}'
+    _search_url = _base_url + '/search/pages/results/'
+    url_template = from_page_template + file_suffix
+
+    def sunday_pages(self):
+        search_payload = {
+            'date1': '1913',
+            'date2': '1944',
+            'proxdistance': '5',
+            'proxtext': 'krazy+herriman',
+            'sort': 'relevance',
+            'format': 'json'
+        }
+        results_seen = 0
+        page = 1
+        urls = []
+        while True:
+            search_payload['page'] = str(page)
+            # print('Fetching page {}'.format(page))
+            result = self.session.get(self._search_url, params=search_payload).json()
+            for item in result['items']:
+                results_seen += 1
+                url = item['url']
+                if url:
+                    yield self._bootstrap_from_url(item['url'])
+            if(results_seen &lt; result['totalItems']):
+                page += 1
+            else:
+                # print('Found {} items'.format(results_seen))
+                break
+
+    @property
+    def date(self):
+        return('-'.join(self._parts[2:6]))
+
+    @property
+    def _named_parts(self):
+        return({'lccn': self._parts[2],
+                'date': self.date,
+                'ed': self._parts[7],
+                'seq': self._parts[9]})
+
+    @property
+    def full_size(self):
+        return(self.url_template.format(**self._named_parts))
+
+    @property
+    def from_page(self):
+        return(self.from_page_template.format(**self._named_parts))
+
+    @property
+    def thumbnail(self):
+        url = self.from_page + '/image_92x120_from_0,0_to_5698,6998.jpg'
+        return(url)
+
+
+    def _bootstrap_from_url(self, url):
+        # http://chroniclingamerica.loc.gov/lccn/sn84026749/1922-04-16/ed-1/seq-50.json
+        url = url.replace('.json', '')
+        self._parts = url.replace('-', '/').split('/')[2:]
+        return self
+
+
+class NewspapersCom(Source):
+    source_id = 'newspapers.com'
+    url_template = 'https://www.newspapers.com/download/image/?type=jpg&amp;id={id}'
+
+    @property
+    def _sundays(self):
+        start_day = '1916-04-23'
+        end_year = 1924
+        date = datetime.datetime.strptime(start_day, '%Y-%m-%d')
+        sundays = []
+        while date.year &lt; end_year:
+            if date.strftime('%A') == 'Sunday':
+                yield date
+            date += datetime.timedelta(days=7)
+
+    def sunday_pages(self):
+        urls = [
+            'http://www.newspapers.com/api/browse/1/US/California/San%20Francisco/The%20San%20Francisco%20Examiner_9317',
+            'http://www.newspapers.com/api/browse/1/US/District%20of%20Columbia/Washington/The%20Washington%20Times_1607'
+        ]
+        for url in urls:
+            for day in self._sundays:
+                day_path = day.strftime('/%Y/%m/%d')
+                rv = self.session.get(url + day_path).json()
+                if 'children' not in rv:
+                    continue
+                for page in rv['children']:
+                    self._parts = [
+                        self.source_id,
+                        day.strftime('%Y'),
+                        day.strftime('%m'),
+                        day.strftime('%d'),
+                        'id',
+                        page['name']
+                    ]
+                yield self
+
+    @property
+    def img_id(self):
+        return(self._parts[-1])
+
+    @property
+    def date(self):
+        if self.img_id in newspapers_dates:
+            return(newspapers_dates[self.img_id])
+        return(None)
+
+    @property
+    def from_page(self):
+        from_url_template = 'https://www.newspapers.com/image/{}/'
+        return(from_url_template.format(self.img_id))
+
+    @property
+    def full_size(self):
+        values = {
+            'id': self.img_id
+            }
+        return(self.url_template.format(**values))
+
+    def request(self):
+        # https://2.python-requests.org//en/latest/user/quickstart/#redirection-and-history
+        # "By default Requests will perform location redirection for all verbs except HEAD."
+        url = self.full_size
+        return(Request('GET', url, headers=self.headers, cookies=self.cookies).prepare())
+
+    @property
+    def thumbnail(self):
+        return('http://img.newspapers.com/img/thumbnail/{}/90/90.jpg'.format(self.img_id))
+
+
+class ChipublibOrg(Source):
+    source_id = 'digital.chipublib.org'
+    _base_url = 'http://' + source_id
+    _full_size_url = _base_url + '/digital/download/collection/examiner/id/{id}/size/full'
+    _thumbnail_url = _base_url + '/digital/api/singleitem/collection/examiner/id/{id}/thumbnail'
+    _info_url      = _base_url + '/digital/api/collections/{collection}/items/{id}/false'
+    url_template = _full_size_url
+
+    _chipublib_defaults = [
+        ('collection', 'examiner'),
+        ('order', 'date'),
+        ('ad', 'dec'),
+        ('page', '1'),
+        ('maxRecords', '100'),
+        ]
+
+    def _url(self, **inputs):
+        options = OrderedDict(self._chipublib_defaults)
+        for key in inputs:
+            if key in options:
+                value = inputs[key]
+                if isinstance(value, int):
+                    value = str(value)
+                options[key] = value
+        path = '/'.join(itertools.chain.from_iterable(options.items()))
+        search_url = 'http://{source_id}/digital/api/search/{path}'.format(source_id=self.source_id, path=path)
+        return search_url
+
+    def _bootstrap_from_id(self, item_id):
+        defaults = dict(self._chipublib_defaults)
+        values = {'id': item_id, 'collection': defaults['collection']}
+        url = self._info_url.format(**values)
+        # print('url: ' + url)
+        result = self.session.get(url).json()
+        fields = dict([(field['key'], field['value']) for field in result['fields']])
+        for child in result['parent']['children']:
+            page_number = child['title'].split(' ')[1]
+            # digital.chipublib.org-examiner-1917-12-16-page-34-item-88543
+            self._parts = [self.source_id, defaults['collection']]
+            self._parts.extend(fields['date'].split(self.sep))
+            self._parts.extend(['page', str(page_number), 'item', str(child['id'])])
+            yield self
+
+    def sunday_pages(self):
+        resultsSeen = 0
+        page = 1
+        while True:
+            result = self.session.get(self._url(page=page)).json()
+            for record in result['items']:
+                resultsSeen += 1
+
+                metadata = dict([(item['field'], item['value']) for item in record['metadataFields']])
+                record_date = datetime.datetime.strptime(metadata['date'], '%Y-%m-%d')
+                # Krazy Kat ... a comic strip by cartoonist George Herriman, ... ran from 1913 to 1944.
+                if record_date.year &lt; 1913:
+                    continue
+                if record_date.strftime('%A') != 'Sunday':
+                    continue
+                item_id = record['itemId']
+
+                for page in self._bootstrap_from_id(item_id):
+                    yield page
+
+            if(resultsSeen &lt; result['totalResults']):
+                page += 1
+            else:
+                break
+
+    @property
+    def full_size(self):
+        values = {
+            'id': self._parts[-1]
+            }
+        return(self._full_size_url.format(**values))
+
+    @property
+    def thumbnail(self):
+        values = {
+            'id': self._parts[-1]
+        }
+        return(self._thumbnail_url.format(**values))
+
+    @property
+    def date(self):
+        # digital.chipublib.org-examiner-1917-08-19-page-38-item-85416
+        return('-'.join(self._parts[2:5]))
+
+    @property
+    def from_page(self):
+        from_page_template = 'http://digital.chipublib.org/digital/collection/examiner/id/{}'
+        return(from_page_template.format(self._parts[-1]))
+
+# class WikipediaOrg(Source):
+#     # https://commons.wikimedia.org/wiki/File:Krazy_Kat_1922-06-25_hand-colored.jpg
+#     url_template = 'https://commons.wikimedia.org/wiki/File:{id}'
+
+class ComicsHaCom(Source):
+    source_id = 'comics.ha.com'
+    from_url_template = 'https://comics.ha.com/itm/a/{}.s'
+
+    @property
+    def date(self):
+        if self.identifier in comics_ha_dates:
+            return(comics_ha_dates[self.identifier])
+        return(None)
+
+    @property
+    def from_page(self):
+        cid = '{}-{}'.format(self._parts[-2], self._parts[-1])
+        return(self.from_url_template.format(cid))
+
+
+class ComicstriplibraryOrg(Source):
+    source_id = 'www.comicstriplibrary.org'
+
+    @property
+    def date(self):
+        date = {
+            'year':  self.identifier[0:4],
+            'month': self.identifier[4:6],
+            'day':   self.identifier[6:8],
+            }
+        return('{year}-{month}-{day}'.format(**date))
+
+    @property
+    def full_size(self):
+        template = 'https://www.comicstriplibrary.org/images/comics/krazy-kat/krazy-kat-{}.png'
+        return template.format(self.identifier)
+
+class Finder:
+    def __init__(self, download_to='images', proxies=None):
+        self.sources = {}
+        self.session = Session()
+        if proxies:
+            # print('Configuring proxies: {}'.format(proxies))
+            self.session.proxies = proxies
+        self.download_to = download_to
+        if not os.path.exists(download_to):
+            os.mkdir(download_to)
+
+
+    def add(self, source):
+        self.sources[source.source_id] = source
+
+    def sunday_pages(self):
+        for source_id in self.sources:
+            source = self.sources[source_id](session=self.session)
+            # print('From: {}'.format(source))
+            for url in source.sunday_pages():
+                yield url
+
+    def identify(self, line):
+        line = line.rstrip()
+        filename = os.path.basename(line)
+        source = filename.split('-')[3]
+        if source in self.sources:
+            return self.sources[source](filename)
+        else:
+            print('Unknown source: {}'.format(source))
+
+    def download(self, img):
+        filename = os.path.join(self.download_to, img.suggested_name)
+        if not os.path.isfile(filename):
+            print('Downloading: {}'.format(filename))
+            return(False)
+            prepared_request = img.request()
+            # https://stackoverflow.com/a/16696317
+            with self.session.send(prepared_request, stream=True) as r:
+                r.raise_for_status()
+                with open(filename, 'wb') as f:
+                    for chunk in r.iter_content(chunk_size=8192): 
+                        if chunk: # filter out keep-alive new chunks
+                            f.write(chunk)
+</code></pre>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
