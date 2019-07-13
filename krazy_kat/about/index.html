@@ -110,6 +110,7 @@
       </div>
     </nav>
     <main role="main" class="container">
+      <img src="https://d2tsqpgsubhmz2.cloudfront.net/1922-01-29-hero-image.png" class="img-fluid" />
       <h1>Summary</h1>
 <p>This page goes into detail on how I used Machine Learning to find
 hundreds of Krazy Kat comics that are now in the public domain. </p>
@@ -466,13 +467,13 @@ named using the <code>suggested_name()</code> for each thumbnail.</p>
 would be saved as this file: <code>digital.chipublib.org-examiner-1917-12-30-page-31-item-88888.jpeg</code></p>
 <p>At this point, I had a folder full of thumbnail images, that looked
 something like this:</p>
-<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/finder-thumbnails.png" /></p>
+<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/finder-thumbnails.png"  class="img-fluid"/></p>
 <p>Using Finder in macOS, I scanned over each image personally. When
 I found a thumbnail that looked like it contained Krazy Kat, I'd
 use the identifier in the filename to load up the full sized
 image. For example, if I thought that this thumbnail contained
 Krazy Kat:</p>
-<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/thumbnails-digital.chipublib.org-examiner-1917-12-30-page-31-item-88888.jpeg" /></p>
+<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/thumbnails-digital.chipublib.org-examiner-1917-12-30-page-31-item-88888.jpeg" class="img-fluid"/></p>
 <p>Then I would take the identifier from that filename (in this case
 "88888") and use that to load up the full sized image, which in
 this example would be this URL:
@@ -504,7 +505,7 @@ sunday comics in them, tag those images "krazy" and then upload
 about 100 images that did <em>not</em> have Krazy Kat in them.</p>
 <p>To get the thumbnails I found with Krazy Kat, I simply made a
 "Smart Folder" in macOS that contained all images tagged "Green"</p>
-<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/finder-green-smart-folder.png" /></p>
+<p><img alt="img" src="//d2tsqpgsubhmz2.cloudfront.net/finder-green-smart-folder.png" class="img-fluid"/></p>
 <p>I simply selected all of the images from the Smart Folder and
 dragged them into Custom Vision to upload them. After tagging
 those images as "krazy" I repeated the process to upload
@@ -609,7 +610,7 @@ names, names that have to do with the contents of the comic,
 "perceptual hashing", and so on. Eventually I just decided to use
 the dates that Fantagraphics used in their books.</p>
 <p>Overall, this approach worked quite well. With one exception!
-One of the comics that I found, published on 1922-10-29, was not
+One of the comics that I found, published on <a href="https://joel.franusic.com/krazy_kat/#chroniclingamerica.loc.gov-sn84026749-1922-01-29-ed-1-seq-27">1922-01-29</a>, was not
 in any of the Fantagraphics books I looked in! I'm not sure why
 this is the case, but I suspect that the archive from which
 Fantagraphics used somehow didn't have this comic? I hope that
