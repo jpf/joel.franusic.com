@@ -5,7 +5,7 @@ permalink: playable_quotes_for_game_boy
 ---
 
 <div>
-<a href="https://tenmile.quote.games/player.html#drop=https://cdn.glitch.com/80f5a65b-f7e3-4b40-b639-8e2c014de0ca%2Ftuff.gb">
+<a href="https://tenmile.quote.games/player.html#drop=https://joel.franusic.com/assets/TUFF-ca28-3d23650d.png">
 <video muted autoplay loop width="250">
 <source src="/assets/TUFF-ca28-3d23650d.mp4" type="video/webm">
 Sorry, your browser doesn't support embedded videos.
