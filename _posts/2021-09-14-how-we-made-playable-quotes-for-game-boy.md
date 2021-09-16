@@ -179,7 +179,7 @@ In short, we decided that we wanted to work towards three things:
 2. A JavaScript library to allow anybody to embed a Playable Quote into any webpage (“jQuery for embedding Playable Quotes”)
 3. A webpage to allow people to create and share Playable Quotes (“Imgur for Playable Game Boy Quotes”)
 
-Of those three goals, the last one is what we’ve completed so far in the form of the website you can see now at https://tenmile.quote.games
+Of those three goals, the last one is what we’ve completed so far in the form of the website you can see now at [https://tenmile.quote.games](https://tenmile.quote.games)
 
 As someone who sometimes doubts the utility of his side projects, Joël found it really encouraging to see how Adam and Kathleen’s past projects were helping shape future projects. Inspired by Feminist Hacker Barbie, we wanted to make it easy to make new content via an in-browser casual creator tool that assumed no technical knowledge. Sketch-a-bit also inspired the “insert ROM to continue” functionality in our emulator, which, like in Sketch-a-bit, allows people to extend each other's creations and turn consumers into creators.
 
