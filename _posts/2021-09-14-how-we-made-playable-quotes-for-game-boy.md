@@ -17,9 +17,9 @@ Imagine there’s a specific moment in a Game Boy game that you want to share wi
 
 With Playable Quotes for Game Boy, you can create and share tiny interactive slices of existing games. Simply load your game into the Playable Quotes emulator, play towards the part of the game you want to demonstrate, click the “Record New Quote” button, continue playing, then eventually click the “Stop recording” button to complete the demo. Once that is done, you’d get a file that contains just enough of the game to recreate all the moments in the game between when you clicked the “Record demo” button and the moment when you hit the “Stop recording” button. Others can now watch your quote as if it were a video, or decide to grab the controls at any moment and explore the impact of their own choices.
 
-In this post, I will go into detail about how we (Joël Franusic and Adam Smith) created Playable Quotes.
+In this post, we  (Joël Franusic and Adam Smith) will go into detail about how we created Playable Quotes.
 
-This is a long post, so let me start with an overview of what I will be covering:
+This is a long post, so we'll start with an overview of what we'll be covering:
 
 1. What is a Playable Quote?
 2. What can you do with a Playable Quote?
@@ -219,7 +219,7 @@ The initial problem was that we were only recording button presses at the end of
 
 After struggling with getting reproducible game replays working for a while, we decided that it was good enough for a release, and decided to focus on polish.
 
-For a brief period of time, Joël considered moving the project from Glitch to GitHub Pages or S3. Thankfully, I didn’t have to do any of that after realizing that putting CloudFlare in front of Glitch would be more than enough to handle whatever load we might get. Sometimes the simplest solutions are the best ones. One fun side effect of doing our project (and associated prototypes) on Glitch is that the history of our collaborative public development of the system is fully tracked.
+For a brief period of time, Joël considered moving the project from Glitch to GitHub Pages or S3. Thankfully, he didn’t have to do any of that after realizing that putting CloudFlare in front of Glitch would be more than enough to handle whatever load we might get. Sometimes the simplest solutions are the best ones. One fun side effect of doing our project (and associated prototypes) on Glitch is that the history of our collaborative public development of the system is fully tracked.
 
 As usual, adding the polish took a lot of work! Adam worked on making nice-looking PNG files for the Playable Quotes. Joël worked on making the emulator controls work on desktop and mobile, and Kathleen Tuite generously helped make the emulator look good (with rounded corners evocative of the plastic case on the original Game Boy hardware).
 
