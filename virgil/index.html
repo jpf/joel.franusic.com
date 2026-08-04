@@ -1,33 +1,430 @@
-<!doctype html>
-<html lang="">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Virgil</title>
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
-  <!-- <meta name="description" content=""> -->
+<!-- 2026-08-04 Tue 01:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Joël Franusic" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
-  <!-- <meta property="og:title" content=""> -->
-  <!-- <meta property="og:type" content=""> -->
-  <!-- <meta property="og:url" content=""> -->
-  <!-- <meta property="og:image" content=""> -->
-  <!-- <meta property="og:image:alt" content=""> -->
-
-  <!-- <link rel="icon" href="/favicon.ico" sizes="any"> -->
-  <!-- <link rel="icon" href="/icon.svg" type="image/svg+xml"> -->
-  <!-- <link rel="apple-touch-icon" href="icon.png"> -->
-
-  <!-- <link rel="manifest" href="site.webmanifest"> -->
-  <meta name="theme-color" content="#fafafa">
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
 </head>
-
 <body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5007c47">1. Virgil</a>
+<ul>
+<li><a href="#org187b8da">1.1. How does Virgil work?</a></li>
+<li><a href="#org799e3f3">1.2. How to use Virgil</a></li>
+<li><a href="#org6a79e80">1.3. High level guidance for writing an 9P server</a></li>
+<li><a href="#org3d70200">1.4. Why is it called "Virigl"?</a></li>
+<li><a href="#org96b2e36">1.5. How to test your 9P fileserver</a>
+<ul>
+<li><a href="#orgc81ccb6">1.5.1. Linux</a></li>
+<li><a href="#org3f77e83">1.5.2. Plan 9</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5007c47" class="outline-2">
+<h2 id="org5007c47"><span class="section-number-2">1.</span> Virgil</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Virgil is a tool that guides you, step-by-step, through creating a
+fully functional 9P file server.
+</p>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is a placeholder for Virgil.</p>
-  <!-- <script src="js/app.js"></script> -->
+<p>
+Writing a 9P fileserver isn't easy, it requires far more than just
+implementing the 9P protocol. You also need to implement a file
+system, with all of the gotchas and edge cases that go with that.
+</p>
 
+<p>
+To make matters even more difficult, testing a 9P server can be very
+frustrating as an error can mean that a mount in Plan 9 or Linux can
+hang the Operating System, requiring a long wait or a reboot.
+</p>
+</div>
+<div id="outline-container-org187b8da" class="outline-3">
+<h3 id="org187b8da"><span class="section-number-3">1.1.</span> How does Virgil work?</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Virgil started out as a re-implementation of the excellent
+<a href="https://github.com/Barre/pjdfstest_nfs">pjdfstest<sub>nfs</sub></a> test suite, which I found via the <a href="https://github.com/aspenmayer/zerofs#testing">ZeroFS</a>
+project. The main difference between pjdfstest<sub>nfs</sub> and Virgil is that
+Virgil tests 9P servers directly, rather than via a Linux mount. This
+makes it easier and faster to iterate on a server design.
+</p>
+
+<p>
+I should note that while pjdfstest<sub>nfs</sub> served as the initial basis for
+Virgil, many of the tests were found via other methods including
+manual testing, mutation testing, fuzzing, differential fuzzing, and
+formal verification via Dafny.
+</p>
+</div>
+</div>
+<div id="outline-container-org799e3f3" class="outline-3">
+<h3 id="org799e3f3"><span class="section-number-3">1.2.</span> How to use Virgil</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+The basics of using Virgil is to write a program that reads 9P
+messages via STDIN and 9P messages out via STDOUT.
+</p>
+
+<p>
+Then you run Virgil by passing the name of your program via the
+command line. If the name of your program was <code>example-server</code> you'd call
+Virigil like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./virgil stdio://./example-server
+</pre>
+</div>
+
+<p>
+The example above uses the "stdio" protocol by default, because it's
+faster. But Virigil also supports "tcp" (TCP/IP) and "wss"
+(WebSockets) - I highly recommend using the "stdio" interface because it's much
+faster insomuch as it doesn't have to start your software up as a
+server and mantage the lifecycle.
+</p>
+
+<p>
+Virgil will start running tests against your program, starting from
+roughly the easiest thing to do, then moving into harder and harder
+challenges.
+</p>
+
+<p>
+The basic loop that you will be following is this:
+</p>
+
+<ul class="org-ul">
+<li>Run Virgil</li>
+<li>Read the error and hint for how to implement the next feature</li>
+<li>Loop until all tests pass</li>
+</ul>
+
+<p>
+Once all of the tests pass, then you'll be able to mount your
+filesystem in a real operating system like Linux or Plan 9.
+</p>
+</div>
+</div>
+<div id="outline-container-org6a79e80" class="outline-3">
+<h3 id="org6a79e80"><span class="section-number-3">1.3.</span> High level guidance for writing an 9P server</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+After spending a lot of time working on Virgil, here are the high
+level things to keep in mind as you implement a 9P server:
+</p>
+
+<ol class="org-ol">
+<li>Do all of the 9P message encoding and decoding in one place.
+You may be tempted to spread some of the decoding work into various
+functions. Don't do this! Implement all encoding and decoding in a
+single function or object.</li>
+<li>Implement your filesytem as a tree.
+Even if you're only going to be serving a few files, you will want
+to use a whole dang tree structure. Trust me on this one.</li>
+<li>Use a single custom error function to send errors.
+Linux expects very specific error strings. But Virgil requires
+verbose error messages to make sure you're doing the right
+thing. This will make sense later.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org3d70200" class="outline-3">
+<h3 id="org3d70200"><span class="section-number-3">1.4.</span> Why is it called "Virigl"?</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+The successor to Plan 9 was called "Inferno" after the first cantica
+in Dante's "Divine Comedy". The 9P protocol we use today is
+technically called 9P2000 in the Plan 9 Operating System, or "Styx" in
+the Inferno Operating System. 9P2000 and Styx are the same protocol.
+</p>
+
+<p>
+In Dante's Divine Comedy, the poet Virgil guides Dante through Hell,
+Pugatory, and Paradise. 
+</p>
+</div>
+</div>
+<div id="outline-container-org96b2e36" class="outline-3">
+<h3 id="org96b2e36"><span class="section-number-3">1.5.</span> How to test your 9P fileserver</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Once you have a file server that passes all of the tests in Virgil, here is how you can test it!
+</p>
+
+<p>
+If your code doesn't nativly support TCP/IP, you can use the <code>socat</code> command to serve it for you:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">socat TCP-LISTEN:4755,reuseaddr,fork EXEC:"example-server"
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgc81ccb6" class="outline-4">
+<h4 id="orgc81ccb6"><span class="section-number-4">1.5.1.</span> Linux</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+If you don't have a mount point for your 9P server, make one:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">mkdir /mnt/my9p
+</pre>
+</div>
+
+<p>
+Then, run the command below, replacing <code>10.0.2.2</code> with the IP
+address for your 9P server. I use <code>10.0.2.2</code> because that's what
+my version of QEMU uses to route out of the VM to my local machine.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">mount -t 9p -o trans=tcp,port=4755,version=9p2000,uname=nobody,aname=/,cache=none,msize=65536 10.0.2.2 /mnt/my9p
+</pre>
+</div>
+
+<p>
+Check out your new 9P server!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ls -al /mnt/my9p
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3f77e83" class="outline-4">
+<h4 id="org3f77e83"><span class="section-number-4">1.5.2.</span> Plan 9</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+Assuming that your version of Plan 9 is on the same machine as your 9P
+server, then run this command inside of Plan 9:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">srv tcp!localhost!4755 my9p
+mount -n /srv/my9p /n/my9p
+</pre>
+</div>
+
+<p>
+Once it is mounted, then you can check it out using <code>ls</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ls -l /n/my9p
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Joël Franusic</p>
+<p class="date">Created: 2026-08-04 Tue 01:27</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
 </body>
-
 </html>
