@@ -196,7 +196,7 @@
 <header>
 <h1 class="title">Virgil</h1>
 </header>
-<figure id="org48b6b3b">
+<figure id="org43b4065">
 <img src="500px-The_Vision_of_Hell_MET_DP106349.jpg" alt="A wood engraved illustration of Virgil and Dante in Hell, as depicted by Gustav Doré" style="max-width:30%;height:auto;">
 
 </figure>
@@ -217,9 +217,9 @@ To make matters even more difficult, testing a 9P server can be very
 frustrating as an error can mean that a mount in Plan 9 or Linux can
 hang the Operating System, requiring a long wait or a reboot.
 </p>
-<div id="outline-container-orgce39266" class="outline-2">
-<h2 id="orgce39266">How does Virgil work?</h2>
-<div class="outline-text-2" id="text-orgce39266">
+<div id="outline-container-orgff62660" class="outline-2">
+<h2 id="orgff62660">How does Virgil work?</h2>
+<div class="outline-text-2" id="text-orgff62660">
 <p>
 Virgil started out as a re-implementation of the excellent
 <a href="https://github.com/Barre/pjdfstest_nfs">pjdfstest_nfs</a> test suite, which I found via the <a href="https://github.com/aspenmayer/zerofs#testing">ZeroFS</a>
@@ -236,9 +236,9 @@ formal verification via Dafny.
 </p>
 </div>
 </div>
-<div id="outline-container-org40d4190" class="outline-2">
-<h2 id="org40d4190">How to get Virgil</h2>
-<div class="outline-text-2" id="text-org40d4190">
+<div id="outline-container-org9d23b98" class="outline-2">
+<h2 id="org9d23b98">How to get Virgil</h2>
+<div class="outline-text-2" id="text-org9d23b98">
 <p>
 I've made Virgil available for download at the following locations:
 </p>
@@ -267,9 +267,9 @@ quarantine flag using this command:
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf1e0d0" class="outline-2">
-<h2 id="orgaf1e0d0">How to use Virgil</h2>
-<div class="outline-text-2" id="text-orgaf1e0d0">
+<div id="outline-container-org840cedd" class="outline-2">
+<h2 id="org840cedd">How to use Virgil</h2>
+<div class="outline-text-2" id="text-org840cedd">
 <p>
 The basics of using Virgil is to write a program that reads 9P
 messages via STDIN and 9P messages out via STDOUT.
@@ -281,7 +281,7 @@ first test in Virgil:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org364fbdd">import struct
+<pre class="src src-python" id="org7ecb61c">import struct
 import sys
 
 TVERSION = 100
@@ -306,12 +306,6 @@ while True:
 </div>
 
 <p>
-If you are reading this document in Emacs, you can export the code
-blocks in this file with <code>M-x org-babel-tangle</code> (bound to <code>C-c C-v t</code>),
-which writes each block to the file named in its <code>:tangle</code> header.
-</p>
-
-<p>
 You would need to make the program executable:
 </p>
 
@@ -334,7 +328,7 @@ And then, assuming that Virgil was in the same directory as
 And then you'd see output like this:
 </p>
 
-<pre class="example" id="orgc025b40">
+<pre class="example" id="org8d647da">
 Level 1: Handshake
   ok  [wad] version negotiation succeeds
   ok  [salt] msize is at most the client's requested value
@@ -403,7 +397,7 @@ Here is one in JavaScript:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js" id="org7b9eee5">const TVERSION = 100;
+<pre class="src src-js" id="org5debb5d">const TVERSION = 100;
 const RVERSION = 101;
 
 let buf = Buffer.alloc(0);
@@ -440,7 +434,7 @@ and here is one in Go:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-go" id="orgea11392">package main
+<pre class="src src-go" id="org102d187">package main
 
 import (
         "encoding/binary"
@@ -484,9 +478,9 @@ Go programs need to be compiled before Virgil can run them:
 </div>
 </div>
 </div>
-<div id="outline-container-org0174bbd" class="outline-2">
-<h2 id="org0174bbd">High level guidance for writing an 9P server</h2>
-<div class="outline-text-2" id="text-org0174bbd">
+<div id="outline-container-org51c9abc" class="outline-2">
+<h2 id="org51c9abc">High level guidance for writing an 9P server</h2>
+<div class="outline-text-2" id="text-org51c9abc">
 <p>
 After spending a lot of time working on Virgil, here are the high
 level things to keep in mind as you implement a 9P server:
@@ -507,9 +501,9 @@ thing. This will make sense later.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgb92351d" class="outline-2">
-<h2 id="orgb92351d">Why is it called "Virgil"?</h2>
-<div class="outline-text-2" id="text-orgb92351d">
+<div id="outline-container-orgf2617c0" class="outline-2">
+<h2 id="orgf2617c0">Why is it called "Virgil"?</h2>
+<div class="outline-text-2" id="text-orgf2617c0">
 <p>
 The successor to Plan 9 was called "Inferno" after the first cantica
 in Dante's "Divine Comedy". The 9P protocol we use today is
@@ -523,9 +517,9 @@ Purgatory, and Paradise.
 </p>
 </div>
 </div>
-<div id="outline-container-org3db6726" class="outline-2">
-<h2 id="org3db6726">How to test your 9P fileserver</h2>
-<div class="outline-text-2" id="text-org3db6726">
+<div id="outline-container-org731dc65" class="outline-2">
+<h2 id="org731dc65">How to test your 9P fileserver</h2>
+<div class="outline-text-2" id="text-org731dc65">
 <p>
 Once you have a file server that passes all of the tests in Virgil, here is how you can test it!
 </p>
@@ -540,9 +534,9 @@ If your code doesn't natively support TCP/IP, you can use the <code>socat</code>
 </pre>
 </div>
 </div>
-<div id="outline-container-org8dd8ab6" class="outline-3">
-<h3 id="org8dd8ab6">Linux</h3>
-<div class="outline-text-3" id="text-org8dd8ab6">
+<div id="outline-container-orgeebb6c9" class="outline-3">
+<h3 id="orgeebb6c9">Linux</h3>
+<div class="outline-text-3" id="text-orgeebb6c9">
 <p>
 If you don't have a mount point for your 9P server, make one:
 </p>
@@ -573,9 +567,9 @@ Check out your new 9P server!
 </div>
 </div>
 </div>
-<div id="outline-container-org2441c40" class="outline-3">
-<h3 id="org2441c40">Plan 9</h3>
-<div class="outline-text-3" id="text-org2441c40">
+<div id="outline-container-org9b231cc" class="outline-3">
+<h3 id="org9b231cc">Plan 9</h3>
+<div class="outline-text-3" id="text-org9b231cc">
 <p>
 Assuming that your version of Plan 9 is on the same machine as your 9P
 server, then run this command inside of Plan 9:
