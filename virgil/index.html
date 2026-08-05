@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- 2026-08-04 Tue 01:27 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Virgil</title>
 <meta name="author" content="Joël Franusic" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -196,30 +193,14 @@
 </head>
 <body>
 <div id="content" class="content">
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org5007c47">1. Virgil</a>
-<ul>
-<li><a href="#org187b8da">1.1. How does Virgil work?</a></li>
-<li><a href="#org799e3f3">1.2. How to use Virgil</a></li>
-<li><a href="#org6a79e80">1.3. High level guidance for writing an 9P server</a></li>
-<li><a href="#org3d70200">1.4. Why is it called "Virigl"?</a></li>
-<li><a href="#org96b2e36">1.5. How to test your 9P fileserver</a>
-<ul>
-<li><a href="#orgc81ccb6">1.5.1. Linux</a></li>
-<li><a href="#org3f77e83">1.5.2. Plan 9</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org5007c47" class="outline-2">
-<h2 id="org5007c47"><span class="section-number-2">1.</span> Virgil</h2>
-<div class="outline-text-2" id="text-1">
+<header>
+<h1 class="title">Virgil</h1>
+</header>
+<figure id="org48b6b3b">
+<img src="500px-The_Vision_of_Hell_MET_DP106349.jpg" alt="A wood engraved illustration of Virgil and Dante in Hell, as depicted by Gustav Doré" style="max-width:30%;height:auto;">
+
+</figure>
+
 <p>
 Virgil is a tool that guides you, step-by-step, through creating a
 fully functional 9P file server.
@@ -236,57 +217,164 @@ To make matters even more difficult, testing a 9P server can be very
 frustrating as an error can mean that a mount in Plan 9 or Linux can
 hang the Operating System, requiring a long wait or a reboot.
 </p>
-</div>
-<div id="outline-container-org187b8da" class="outline-3">
-<h3 id="org187b8da"><span class="section-number-3">1.1.</span> How does Virgil work?</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgce39266" class="outline-2">
+<h2 id="orgce39266">How does Virgil work?</h2>
+<div class="outline-text-2" id="text-orgce39266">
 <p>
 Virgil started out as a re-implementation of the excellent
-<a href="https://github.com/Barre/pjdfstest_nfs">pjdfstest<sub>nfs</sub></a> test suite, which I found via the <a href="https://github.com/aspenmayer/zerofs#testing">ZeroFS</a>
-project. The main difference between pjdfstest<sub>nfs</sub> and Virgil is that
+<a href="https://github.com/Barre/pjdfstest_nfs">pjdfstest_nfs</a> test suite, which I found via the <a href="https://github.com/aspenmayer/zerofs#testing">ZeroFS</a>
+project. The main difference between pjdfstest_nfs and Virgil is that
 Virgil tests 9P servers directly, rather than via a Linux mount. This
 makes it easier and faster to iterate on a server design.
 </p>
 
 <p>
-I should note that while pjdfstest<sub>nfs</sub> served as the initial basis for
+I should note that while pjdfstest_nfs served as the initial basis for
 Virgil, many of the tests were found via other methods including
 manual testing, mutation testing, fuzzing, differential fuzzing, and
 formal verification via Dafny.
 </p>
 </div>
 </div>
-<div id="outline-container-org799e3f3" class="outline-3">
-<h3 id="org799e3f3"><span class="section-number-3">1.2.</span> How to use Virgil</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org40d4190" class="outline-2">
+<h2 id="org40d4190">How to get Virgil</h2>
+<div class="outline-text-2" id="text-org40d4190">
+<p>
+I've made Virgil available for download at the following locations:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://dl.j10c.com/virgil/virgil-macos-apple.zip">macOS (Apple Silicon)</a></li>
+<li><a href="https://dl.j10c.com/virgil/virgil-macos-intel.zip">macOS (Intel)</a></li>
+<li><a href="https://dl.j10c.com/virgil/virgil-linux-x64.tar.gz">Linux (x64)</a></li>
+<li><a href="https://dl.j10c.com/virgil/virgil-linux-arm64.tar.gz">Linux (arm64)</a></li>
+<li><a href="https://dl.j10c.com/virgil/virgil-windows-x64.zip">Windows (x64)</a></li>
+</ul>
+
+<p>
+NOTE:
+</p>
+
+<p>
+macOS quarantines unsigned downloads, so Gatekeeper will refuse to run
+<code>virgil</code> at first. After unzipping the Virgil binary, clear the
+quarantine flag using this command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">xattr -d com.apple.quarantine ./virgil
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaf1e0d0" class="outline-2">
+<h2 id="orgaf1e0d0">How to use Virgil</h2>
+<div class="outline-text-2" id="text-orgaf1e0d0">
 <p>
 The basics of using Virgil is to write a program that reads 9P
 messages via STDIN and 9P messages out via STDOUT.
 </p>
 
 <p>
-Then you run Virgil by passing the name of your program via the
-command line. If the name of your program was <code>example-server</code> you'd call
-Virigil like this:
+For example, here is a basic program in Python that passes just the
+first test in Virgil:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">./virgil stdio://./example-server
+<pre class="src src-python" id="org364fbdd">import struct
+import sys
+
+TVERSION = 100
+RVERSION = 101
+
+while True:
+    header = sys.stdin.buffer.read(7)
+    if len(header) &lt; 7:
+        break
+    size, msg_type, tag = struct.unpack("&lt;IBH", header)
+    body = sys.stdin.buffer.read(size - 7)
+
+    if msg_type == TVERSION:
+        msize = struct.unpack("&lt;I", body[0:4])[0]
+        version = b"9P2000"
+        sys.stdout.buffer.write(
+            struct.pack("&lt;IBHI H", 13 + len(version), RVERSION, tag, msize, len(version)) + version
+        )
+
+        sys.stdout.buffer.flush()
 </pre>
 </div>
 
 <p>
-The example above uses the "stdio" protocol by default, because it's
-faster. But Virigil also supports "tcp" (TCP/IP) and "wss"
-(WebSockets) - I highly recommend using the "stdio" interface because it's much
-faster insomuch as it doesn't have to start your software up as a
-server and mantage the lifecycle.
+If you are reading this document in Emacs, you can export the code
+blocks in this file with <code>M-x org-babel-tangle</code> (bound to <code>C-c C-v t</code>),
+which writes each block to the file named in its <code>:tangle</code> header.
 </p>
 
 <p>
-Virgil will start running tests against your program, starting from
-roughly the easiest thing to do, then moving into harder and harder
-challenges.
+You would need to make the program executable:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">chmod +x example.py
+</pre>
+</div>
+
+<p>
+And then, assuming that Virgil was in the same directory as
+<code>example.py</code>, you'd run it like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./virgil stdio://./example.py
+</pre>
+</div>
+
+<p>
+And then you'd see output like this:
+</p>
+
+<pre class="example" id="orgc025b40">
+Level 1: Handshake
+  ok  [wad] version negotiation succeeds
+  ok  [salt] msize is at most the client's requested value
+  ok  [foam] a huge requested msize is never exceeded
+ → Send: Tversion (tag=65535)
+ ← recv: Rversion (tag=65535)
+  FAIL  [dwell] A sub-minimum msize is floored or refused, never agreed
+
+  What this test checks:
+    Offer an msize far below any usable frame (10). The server must not agree to it: a frame that small cannot carry even an Rattach (20 bytes) or a 16-qid Rwalk (217 bytes). The server must either floor the negotiated msize to at least 4096 (the Linux v9fs minimum msize), decline negotiation by replying version "unknown", or refuse negotiation outright with Rerror (inferno replies "message size too small").
+
+ [...]
+    
+  Hint:
+    Negotiated msize bounds every reply on the connection; agreeing to msize=10 then sending a 71-byte Rstat violates the frame. Enforce a minimum: if min(client_msize, server_msize) is below your floor, either raise it to the floor, reply Rversion with version "unknown", or refuse with Rerror. 4096 is the Linux v9fs minimum msize; the bare structural minimum is a 16-qid Rwalk = 217 bytes. Usable read/write payload is msize minus IOHDRSZ (24), so msize=10 cannot frame any I/O.
+
+Stopped at Level 1, test 4/6. Fix the above and run virgil again.
+</pre>
+
+<p>
+Because the 9P protocol can be run over any bidirectional link which
+delivers messages in-order, you can run 9P over transports like serial
+links, named pipes, STDIN/STDOUT, TCP/IP, or WebSockets.
+</p>
+
+<p>
+Right now, Virgil supports STDIN/STDOUT ("stdio"), TCP/IP ("tcp"), and
+WebSockets ("wss")
+</p>
+
+<p>
+I highly recommend using the "stdio" interface for development because
+it will give you the fastest feedback on the status of your 9P
+implementation. 
+</p>
+
+<p>
+The way that Virgil works is that it runs a whole suite of tests
+against your program, starting from roughly the easiest, then moving
+onto harder and harder challenges.
 </p>
 
 <p>
@@ -295,19 +383,110 @@ The basic loop that you will be following is this:
 
 <ul class="org-ul">
 <li>Run Virgil</li>
-<li>Read the error and hint for how to implement the next feature</li>
-<li>Loop until all tests pass</li>
+<li>Read the error and hint</li>
+<li>Write some code</li>
+<li>Repeat until all tests pass</li>
 </ul>
 
 <p>
 Once all of the tests pass, then you'll be able to mount your
 filesystem in a real operating system like Linux or Plan 9.
 </p>
+
+<p>
+I use a Python example above, but here are two other programs that
+pass just the first test in Virgil:
+</p>
+
+<p>
+Here is one in JavaScript:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js" id="org7b9eee5">const TVERSION = 100;
+const RVERSION = 101;
+
+let buf = Buffer.alloc(0);
+process.stdin.on("data", (chunk) =&gt; {
+  buf = Buffer.concat([buf, chunk]);
+  while (buf.length &gt;= 7 &amp;&amp; buf.length &gt;= buf.readUInt32LE(0)) {
+    const msg = buf.subarray(0, buf.readUInt32LE(0));
+    buf = buf.subarray(msg.length);
+
+    if (msg[4] === TVERSION) {
+      process.stdout.write(Buffer.concat([
+        Buffer.from([19, 0, 0, 0, RVERSION]),
+        msg.subarray(5, 11),
+        Buffer.from("\x06\x009P2000", "latin1"),
+      ]));
+    }
+  }
+});
+</pre>
+</div>
+
+<p>
+Like the Python example, make it executable with <code>chmod +x example.js</code>
+and run it with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./virgil stdio://./example.js
+</pre>
+</div>
+
+<p>
+and here is one in Go:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-go" id="orgea11392">package main
+
+import (
+        "encoding/binary"
+        "io"
+        "os"
+)
+
+const Tversion, Rversion = 100, 101
+
+func main() {
+        for {
+                header := make([]byte, 7)
+                if _, err := io.ReadFull(os.Stdin, header); err != nil {
+                        return
+                }
+                body := make([]byte, binary.LittleEndian.Uint32(header[:4])-7)
+                if _, err := io.ReadFull(os.Stdin, body); err != nil {
+                        return
+                }
+
+                if header[4] == Tversion {
+                        reply := []byte{19, 0, 0, 0, Rversion}
+                        reply = append(reply, header[5:7]...)
+                        reply = append(reply, body[:4]...)
+                        reply = append(reply, "\x06\x009P2000"...)
+                        os.Stdout.Write(reply)
+                }
+        }
+}
+</pre>
+</div>
+
+<p>
+Go programs need to be compiled before Virgil can run them:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">go build -o example-go example.go
+./virgil stdio://./example-go
+</pre>
 </div>
 </div>
-<div id="outline-container-org6a79e80" class="outline-3">
-<h3 id="org6a79e80"><span class="section-number-3">1.3.</span> High level guidance for writing an 9P server</h3>
-<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org0174bbd" class="outline-2">
+<h2 id="org0174bbd">High level guidance for writing an 9P server</h2>
+<div class="outline-text-2" id="text-org0174bbd">
 <p>
 After spending a lot of time working on Virgil, here are the high
 level things to keep in mind as you implement a 9P server:
@@ -318,7 +497,7 @@ level things to keep in mind as you implement a 9P server:
 You may be tempted to spread some of the decoding work into various
 functions. Don't do this! Implement all encoding and decoding in a
 single function or object.</li>
-<li>Implement your filesytem as a tree.
+<li>Implement your filesystem as a tree.
 Even if you're only going to be serving a few files, you will want
 to use a whole dang tree structure. Trust me on this one.</li>
 <li>Use a single custom error function to send errors.
@@ -328,9 +507,9 @@ thing. This will make sense later.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org3d70200" class="outline-3">
-<h3 id="org3d70200"><span class="section-number-3">1.4.</span> Why is it called "Virigl"?</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgb92351d" class="outline-2">
+<h2 id="orgb92351d">Why is it called "Virgil"?</h2>
+<div class="outline-text-2" id="text-orgb92351d">
 <p>
 The successor to Plan 9 was called "Inferno" after the first cantica
 in Dante's "Divine Comedy". The 9P protocol we use today is
@@ -340,19 +519,19 @@ the Inferno Operating System. 9P2000 and Styx are the same protocol.
 
 <p>
 In Dante's Divine Comedy, the poet Virgil guides Dante through Hell,
-Pugatory, and Paradise. 
+Purgatory, and Paradise. 
 </p>
 </div>
 </div>
-<div id="outline-container-org96b2e36" class="outline-3">
-<h3 id="org96b2e36"><span class="section-number-3">1.5.</span> How to test your 9P fileserver</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org3db6726" class="outline-2">
+<h2 id="org3db6726">How to test your 9P fileserver</h2>
+<div class="outline-text-2" id="text-org3db6726">
 <p>
 Once you have a file server that passes all of the tests in Virgil, here is how you can test it!
 </p>
 
 <p>
-If your code doesn't nativly support TCP/IP, you can use the <code>socat</code> command to serve it for you:
+If your code doesn't natively support TCP/IP, you can use the <code>socat</code> command to serve it for you:
 </p>
 
 <div class="org-src-container">
@@ -361,9 +540,9 @@ If your code doesn't nativly support TCP/IP, you can use the <code>socat</code> 
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc81ccb6" class="outline-4">
-<h4 id="orgc81ccb6"><span class="section-number-4">1.5.1.</span> Linux</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-org8dd8ab6" class="outline-3">
+<h3 id="org8dd8ab6">Linux</h3>
+<div class="outline-text-3" id="text-org8dd8ab6">
 <p>
 If you don't have a mount point for your 9P server, make one:
 </p>
@@ -394,9 +573,9 @@ Check out your new 9P server!
 </div>
 </div>
 </div>
-<div id="outline-container-org3f77e83" class="outline-4">
-<h4 id="org3f77e83"><span class="section-number-4">1.5.2.</span> Plan 9</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-org2441c40" class="outline-3">
+<h3 id="org2441c40">Plan 9</h3>
+<div class="outline-text-3" id="text-org2441c40">
 <p>
 Assuming that your version of Plan 9 is on the same machine as your 9P
 server, then run this command inside of Plan 9:
@@ -419,12 +598,6 @@ Once it is mounted, then you can check it out using <code>ls</code>:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Joël Franusic</p>
-<p class="date">Created: 2026-08-04 Tue 01:27</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
