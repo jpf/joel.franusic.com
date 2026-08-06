@@ -1,0 +1,328 @@
+#+TITLE: Virgil
+#+OPTIONS: toc:nil num:nil ^:nil html-postamble:nil html5-fancy:t timestamp:nil
+#+HTML_DOCTYPE: html5
+#+EXPORT_FILE_NAME: index
+
+
+#+ATTR_HTML: :style max-width:30%;height:auto; :alt A wood engraved illustration of Virgil and Dante in Hell, as depicted by Gustav Doré
+[[file:500px-The_Vision_of_Hell_MET_DP106349.jpg]]
+
+Virgil is a tool that guides you, step-by-step, through creating a
+fully functional 9P file server.
+
+Writing a 9P fileserver isn't easy because it requires more than just
+implementing the 9P protocol. You also need to implement a file
+system, with all of the gotchas and edge cases that go with that.
+
+To make matters even more difficult, testing a 9P server can be very
+frustrating as an error can mean that a mount in Plan 9 or Linux can
+hang, requiring a long wait or a system reboot.
+
+* How does Virgil work?
+
+Virgil started out as a re-implementation of the excellent
+[[https://github.com/Barre/pjdfstest_nfs][pjdfstest_nfs]] test suite, which I found via the [[https://github.com/aspenmayer/zerofs#testing][ZeroFS]]
+project. The main difference between pjdfstest_nfs and Virgil is that
+Virgil tests 9P servers directly using the 9P protocol, rather than
+via a Linux mount. This makes it easier and faster to iterate on a
+server design.
+
+I should note that while pjdfstest_nfs served as the initial basis for
+Virgil, many of the tests were found via other methods including
+manual testing, mutation testing, fuzzing, differential fuzzing, and
+formal verification via Dafny.
+
+It's also worth mentioning that I'm not totally convinced that all of
+the tests in Virgil are strictly correct!
+
+* How to get Virgil
+
+I've made Virgil available for download at the following locations:
+
+- [[https://dl.j10c.com/virgil/virgil-macos-apple.zip][macOS (Apple Silicon)]]
+- [[https://dl.j10c.com/virgil/virgil-macos-intel.zip][macOS (Intel)]]
+- [[https://dl.j10c.com/virgil/virgil-linux-x64.tar.gz][Linux (x64)]]
+- [[https://dl.j10c.com/virgil/virgil-linux-arm64.tar.gz][Linux (arm64)]]
+- [[https://dl.j10c.com/virgil/virgil-windows-x64.zip][Windows (x64)]]
+
+NOTE:
+
+macOS quarantines unsigned downloads, so Gatekeeper will refuse to run
+=virgil= at first. After unzipping the Virgil binary, clear the
+quarantine flag using this command:
+
+#+begin_src sh
+  xattr -d com.apple.quarantine ./virgil
+#+end_src
+
+I'm only releasing Virgil as a binary right now because I used
+Anthropic's Claude LLM to generate a lot of the code in Virgil and I'm
+embarassed by that. I do plan on releasing the source code once I've
+re-written it all myself and it's in a state that I can be proud of.
+
+* How to use Virgil
+
+The basics of using Virgil is to write a program that reads 9P
+messages via STDIN and writes 9P messages to STDOUT.
+
+For example, here is a basic program in Python that passes the
+first few test in Virgil:
+
+#+NAME: example.py
+#+begin_src python :tangle example.py :shebang "#!/usr/bin/env python3"
+  import struct
+  import sys
+  
+  TVERSION = 100
+  RVERSION = 101
+  
+  while True:
+      header = sys.stdin.buffer.read(7)
+      if len(header) < 7:
+          break
+      size, msg_type, tag = struct.unpack("<IBH", header)
+      body = sys.stdin.buffer.read(size - 7)
+  
+      if msg_type == TVERSION:
+          msize = struct.unpack("<I", body[0:4])[0]
+          version = b"9P2000"
+          sys.stdout.buffer.write(
+              struct.pack("<IBHI H", 13 + len(version), RVERSION, tag, msize, len(version)) + version
+          )
+  
+          sys.stdout.buffer.flush()
+#+end_src
+
+#+BEGIN_COMMENT
+If you are reading this document in Emacs, you can export the code
+blocks in this file with =M-x org-babel-tangle= (bound to =C-c C-v t=),
+which writes each block to the file named in its =:tangle= header.
+#+END_COMMENT
+
+You will need to make the program executable:
+
+#+begin_src sh
+  chmod +x example.py
+#+end_src
+
+And then, assuming that Virgil is in the same directory as
+=example.py=, you'd run it like this:
+
+#+begin_src sh
+  ./virgil stdio://./example.py
+#+end_src
+
+Then you'd see output like this:
+
+#+begin_example
+ Level 1: Handshake
+   ok  [wad] version negotiation succeeds
+   ok  [salt] msize is at most the client's requested value
+   ok  [foam] a huge requested msize is never exceeded
+  → Send: Tversion (tag=65535)
+  ← recv: Rversion (tag=65535)
+   FAIL  [dwell] A sub-minimum msize is floored or refused, never agreed
+
+   What this test checks:
+     Offer an msize far below any usable frame (10). The server must not agree to it: a frame that small cannot carry even an Rattach (20 bytes) or a 16-qid Rwalk (217 bytes). The server must either floor the negotiated msize to at least 4096 (the Linux v9fs minimum msize), decline negotiation by replying version "unknown", or refuse negotiation outright with Rerror (inferno replies "message size too small").
+
+  [...]
+     
+   Hint:
+     Negotiated msize bounds every reply on the connection; agreeing to msize=10 then sending a 71-byte Rstat violates the frame. Enforce a minimum: if min(client_msize, server_msize) is below your floor, either raise it to the floor, reply Rversion with version "unknown", or refuse with Rerror. 4096 is the Linux v9fs minimum msize; the bare structural minimum is a 16-qid Rwalk = 217 bytes. Usable read/write payload is msize minus IOHDRSZ (24), so msize=10 cannot frame any I/O.
+
+ Stopped at Level 1, test 4/6. Fix the above and run virgil again.
+#+end_example
+
+Because the 9P protocol can be run over any bidirectional link which
+delivers messages in-order, you can run 9P over transports like serial
+links, named pipes, STDIN/STDOUT, TCP/IP, or WebSockets.
+
+Right now, Virgil supports STDIN/STDOUT ("stdio"), TCP/IP ("tcp"), and
+WebSockets ("wss")
+
+I highly recommend using the "stdio" interface for development because
+it will give you the fastest feedback on the status of your 9P
+implementation. 
+
+Virgil works by running a suite of tests against your program,
+starting from roughly the easiest, then moving onto harder and harder
+challenges.
+
+The basic loop that you will be following is this:
+
+- Run Virgil
+- Read the error message and hint
+- Update your code per the message and hint
+- Repeat until all tests pass
+
+Once all of the tests pass, then you'll be able to mount your
+filesystem in a real operating system like Linux or Plan 9.
+
+I use a Python example above, but here are two other programs that
+are similar in that they pass the first few test in Virgil:
+
+Here is one in JavaScript:
+
+#+NAME: example.js
+#+begin_src js :tangle example.js :shebang "#!/usr/bin/env node"
+  const TVERSION = 100;
+  const RVERSION = 101;
+
+  let buf = Buffer.alloc(0);
+  process.stdin.on("data", (chunk) => {
+    buf = Buffer.concat([buf, chunk]);
+    while (buf.length >= 7 && buf.length >= buf.readUInt32LE(0)) {
+      const msg = buf.subarray(0, buf.readUInt32LE(0));
+      buf = buf.subarray(msg.length);
+
+      if (msg[4] === TVERSION) {
+        process.stdout.write(Buffer.concat([
+          Buffer.from([19, 0, 0, 0, RVERSION]),
+          msg.subarray(5, 11),
+          Buffer.from("\x06\x009P2000", "latin1"),
+        ]));
+      }
+    }
+  });
+#+end_src
+
+Like with the Python example, you will need to make it executable with
+=chmod +x example.js= and run it with:
+
+#+begin_src sh
+  ./virgil stdio://./example.js
+#+end_src
+
+Also, here is a version in Go:
+
+#+NAME: example.go
+#+begin_src go :tangle example.go
+  package main
+
+  import (
+  	"encoding/binary"
+  	"io"
+  	"os"
+  )
+
+  const Tversion, Rversion = 100, 101
+
+  func main() {
+  	for {
+  		header := make([]byte, 7)
+  		if _, err := io.ReadFull(os.Stdin, header); err != nil {
+  			return
+  		}
+  		body := make([]byte, binary.LittleEndian.Uint32(header[:4])-7)
+  		if _, err := io.ReadFull(os.Stdin, body); err != nil {
+  			return
+  		}
+
+  		if header[4] == Tversion {
+  			reply := []byte{19, 0, 0, 0, Rversion}
+  			reply = append(reply, header[5:7]...)
+  			reply = append(reply, body[:4]...)
+  			reply = append(reply, "\x06\x009P2000"...)
+  			os.Stdout.Write(reply)
+  		}
+  	}
+  }
+#+end_src
+
+You will need to compile the code before you run it in Virgil:
+
+#+begin_src sh
+  go build -o example-go example.go
+  ./virgil stdio://./example-go
+#+end_src
+
+* High level guidance for writing an 9P server
+
+After spending a lot of time working on Virgil, here are the high
+level things to keep in mind as you implement your own 9P server:
+
+1. Do all of the 9P message encoding and decoding in one place.
+   You may be tempted to spread some of the decoding work into various
+   functions. Don't do this! Implement all encoding and decoding in a
+   single function or object. 
+2. Implement your filesystem as a tree.
+   Even if you're only going to be serving a few files, you will want
+   to use a whole dang tree structure. Trust me on this one.
+3. Use a single custom error function to send errors.
+   Linux expects very specific error strings, which Virgil checks for.
+   However, Virgil also uses a slight extension to the 9P protocol to
+   signal to your server that it wants verbose error messages, this is
+   done so that Virgil can "check your work" on things like if you are
+   removing file data when a file is deleted. This will make sense later.
+
+* Why is it called "Virgil"?
+
+The successor to Plan 9 was called "Inferno" after the first cantica
+in Dante's "Divine Comedy". The 9P protocol we use today is
+technically called 9P2000 in Plan 9, and "Styx" in Inferno. 9P2000 and
+Styx are the same protocol.
+
+In Dante's Divine Comedy, the poet Virgil guides Dante through Hell,
+Purgatory, and Paradise.
+
+You may feel like you are going on a similar journey as you implement
+a 9P server and perhaps you will be glad to have a guide of your own.
+
+* How to test your 9P fileserver
+
+Once you have a file server that passes all of the tests in Virgil,
+here is how you can use it from a real operating system:
+
+To start, if your code doesn't natively support TCP/IP, you can use
+the =socat= command to serve it for you:
+
+#+begin_src sh
+  socat TCP-LISTEN:4755,reuseaddr,fork EXEC:"example.py"
+#+end_src
+
+** Linux
+
+Here is how to mount a 9P file server in Linux:
+
+If you don't have a mount point for your 9P server, make one:
+
+#+begin_src sh
+  mkdir /mnt/my9p
+#+end_src
+
+Then, run the command below, replacing =10.0.2.2= with the IP
+address for your 9P server. I use =10.0.2.2= because that's what
+my version of QEMU uses to route out of the VM to my local machine.
+
+#+begin_src sh
+  mount -t 9p -o trans=tcp,port=4755,version=9p2000,uname=nobody,aname=/,cache=none,msize=65536 10.0.2.2 /mnt/my9p
+#+end_src
+
+Then, check out your new 9P server!
+
+#+begin_src sh
+  ls -al /mnt/my9p
+#+end_src
+
+** Plan 9
+
+Assuming that your version of Plan 9 is on the same machine as your 9P
+server, here are the commands to run inside of Plan 9:
+
+#+begin_src sh
+  srv tcp!localhost!4755 my9p
+  mount -n /srv/my9p /n/my9p
+#+end_src
+
+Once it is mounted, then you can check it out using =ls=:
+
+#+begin_src sh
+  ls -l /n/my9p
+#+end_src
+
+* Closing Thoughts
+
+Let me know if you use Virgil! You can use my
+[[https://joel.franusic.com/contact/][contact page]] to see how to reach me. You can also find me on the
+#wanix-talk channel in the [[https://discord.com/invite/JraBdNHuuP][progrium Discord]].

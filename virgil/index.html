@@ -196,7 +196,7 @@
 <header>
 <h1 class="title">Virgil</h1>
 </header>
-<figure id="org43b4065">
+<figure id="orgefbc223">
 <img src="500px-The_Vision_of_Hell_MET_DP106349.jpg" alt="A wood engraved illustration of Virgil and Dante in Hell, as depicted by Gustav Doré" style="max-width:30%;height:auto;">
 
 </figure>
@@ -207,7 +207,7 @@ fully functional 9P file server.
 </p>
 
 <p>
-Writing a 9P fileserver isn't easy, it requires far more than just
+Writing a 9P fileserver isn't easy because it requires more than just
 implementing the 9P protocol. You also need to implement a file
 system, with all of the gotchas and edge cases that go with that.
 </p>
@@ -215,17 +215,18 @@ system, with all of the gotchas and edge cases that go with that.
 <p>
 To make matters even more difficult, testing a 9P server can be very
 frustrating as an error can mean that a mount in Plan 9 or Linux can
-hang the Operating System, requiring a long wait or a reboot.
+hang, requiring a long wait or a system reboot.
 </p>
-<div id="outline-container-orgff62660" class="outline-2">
-<h2 id="orgff62660">How does Virgil work?</h2>
-<div class="outline-text-2" id="text-orgff62660">
+<div id="outline-container-org933eabd" class="outline-2">
+<h2 id="org933eabd">How does Virgil work?</h2>
+<div class="outline-text-2" id="text-org933eabd">
 <p>
 Virgil started out as a re-implementation of the excellent
 <a href="https://github.com/Barre/pjdfstest_nfs">pjdfstest_nfs</a> test suite, which I found via the <a href="https://github.com/aspenmayer/zerofs#testing">ZeroFS</a>
 project. The main difference between pjdfstest_nfs and Virgil is that
-Virgil tests 9P servers directly, rather than via a Linux mount. This
-makes it easier and faster to iterate on a server design.
+Virgil tests 9P servers directly using the 9P protocol, rather than
+via a Linux mount. This makes it easier and faster to iterate on a
+server design.
 </p>
 
 <p>
@@ -234,11 +235,16 @@ Virgil, many of the tests were found via other methods including
 manual testing, mutation testing, fuzzing, differential fuzzing, and
 formal verification via Dafny.
 </p>
+
+<p>
+It's also worth mentioning that I'm not totally convinced that all of
+the tests in Virgil are strictly correct!
+</p>
 </div>
 </div>
-<div id="outline-container-org9d23b98" class="outline-2">
-<h2 id="org9d23b98">How to get Virgil</h2>
-<div class="outline-text-2" id="text-org9d23b98">
+<div id="outline-container-org2cf6731" class="outline-2">
+<h2 id="org2cf6731">How to get Virgil</h2>
+<div class="outline-text-2" id="text-org2cf6731">
 <p>
 I've made Virgil available for download at the following locations:
 </p>
@@ -265,23 +271,30 @@ quarantine flag using this command:
 <pre class="src src-sh">xattr -d com.apple.quarantine ./virgil
 </pre>
 </div>
+
+<p>
+I'm only releasing Virgil as a binary right now because I used
+Anthropic's Claude LLM to generate a lot of the code in Virgil and I'm
+embarassed by that. I do plan on releasing the source code once I've
+re-written it all myself and it's in a state that I can be proud of.
+</p>
 </div>
 </div>
-<div id="outline-container-org840cedd" class="outline-2">
-<h2 id="org840cedd">How to use Virgil</h2>
-<div class="outline-text-2" id="text-org840cedd">
+<div id="outline-container-orgc4c0170" class="outline-2">
+<h2 id="orgc4c0170">How to use Virgil</h2>
+<div class="outline-text-2" id="text-orgc4c0170">
 <p>
 The basics of using Virgil is to write a program that reads 9P
-messages via STDIN and 9P messages out via STDOUT.
+messages via STDIN and writes 9P messages to STDOUT.
 </p>
 
 <p>
-For example, here is a basic program in Python that passes just the
-first test in Virgil:
+For example, here is a basic program in Python that passes the
+first few test in Virgil:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org7ecb61c">import struct
+<pre class="src src-python" id="orgc03d40b">import struct
 import sys
 
 TVERSION = 100
@@ -306,7 +319,7 @@ while True:
 </div>
 
 <p>
-You would need to make the program executable:
+You will need to make the program executable:
 </p>
 
 <div class="org-src-container">
@@ -315,7 +328,7 @@ You would need to make the program executable:
 </div>
 
 <p>
-And then, assuming that Virgil was in the same directory as
+And then, assuming that Virgil is in the same directory as
 <code>example.py</code>, you'd run it like this:
 </p>
 
@@ -325,10 +338,10 @@ And then, assuming that Virgil was in the same directory as
 </div>
 
 <p>
-And then you'd see output like this:
+Then you'd see output like this:
 </p>
 
-<pre class="example" id="org8d647da">
+<pre class="example" id="orgc88b790">
 Level 1: Handshake
   ok  [wad] version negotiation succeeds
   ok  [salt] msize is at most the client's requested value
@@ -366,9 +379,9 @@ implementation.
 </p>
 
 <p>
-The way that Virgil works is that it runs a whole suite of tests
-against your program, starting from roughly the easiest, then moving
-onto harder and harder challenges.
+Virgil works by running a suite of tests against your program,
+starting from roughly the easiest, then moving onto harder and harder
+challenges.
 </p>
 
 <p>
@@ -377,8 +390,8 @@ The basic loop that you will be following is this:
 
 <ul class="org-ul">
 <li>Run Virgil</li>
-<li>Read the error and hint</li>
-<li>Write some code</li>
+<li>Read the error message and hint</li>
+<li>Update your code per the message and hint</li>
 <li>Repeat until all tests pass</li>
 </ul>
 
@@ -389,7 +402,7 @@ filesystem in a real operating system like Linux or Plan 9.
 
 <p>
 I use a Python example above, but here are two other programs that
-pass just the first test in Virgil:
+are similar in that they pass the first few test in Virgil:
 </p>
 
 <p>
@@ -397,7 +410,7 @@ Here is one in JavaScript:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js" id="org5debb5d">const TVERSION = 100;
+<pre class="src src-js" id="org8f45755">const TVERSION = 100;
 const RVERSION = 101;
 
 let buf = Buffer.alloc(0);
@@ -420,8 +433,8 @@ process.stdin.on("data", (chunk) =&gt; {
 </div>
 
 <p>
-Like the Python example, make it executable with <code>chmod +x example.js</code>
-and run it with:
+Like with the Python example, you will need to make it executable with
+<code>chmod +x example.js</code> and run it with:
 </p>
 
 <div class="org-src-container">
@@ -430,11 +443,11 @@ and run it with:
 </div>
 
 <p>
-and here is one in Go:
+Also, here is a version in Go:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-go" id="org102d187">package main
+<pre class="src src-go" id="org9ee8961">package main
 
 import (
         "encoding/binary"
@@ -468,7 +481,7 @@ func main() {
 </div>
 
 <p>
-Go programs need to be compiled before Virgil can run them:
+You will need to compile the code before you run it in Virgil:
 </p>
 
 <div class="org-src-container">
@@ -478,12 +491,12 @@ Go programs need to be compiled before Virgil can run them:
 </div>
 </div>
 </div>
-<div id="outline-container-org51c9abc" class="outline-2">
-<h2 id="org51c9abc">High level guidance for writing an 9P server</h2>
-<div class="outline-text-2" id="text-org51c9abc">
+<div id="outline-container-org7f38273" class="outline-2">
+<h2 id="org7f38273">High level guidance for writing an 9P server</h2>
+<div class="outline-text-2" id="text-org7f38273">
 <p>
 After spending a lot of time working on Virgil, here are the high
-level things to keep in mind as you implement a 9P server:
+level things to keep in mind as you implement your own 9P server:
 </p>
 
 <ol class="org-ol">
@@ -495,48 +508,60 @@ single function or object.</li>
 Even if you're only going to be serving a few files, you will want
 to use a whole dang tree structure. Trust me on this one.</li>
 <li>Use a single custom error function to send errors.
-Linux expects very specific error strings. But Virgil requires
-verbose error messages to make sure you're doing the right
-thing. This will make sense later.</li>
+Linux expects very specific error strings, which Virgil checks for.
+However, Virgil also uses a slight extension to the 9P protocol to
+signal to your server that it wants verbose error messages, this is
+done so that Virgil can "check your work" on things like if you are
+removing file data when a file is deleted. This will make sense later.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgf2617c0" class="outline-2">
-<h2 id="orgf2617c0">Why is it called "Virgil"?</h2>
-<div class="outline-text-2" id="text-orgf2617c0">
+<div id="outline-container-orgf6132e3" class="outline-2">
+<h2 id="orgf6132e3">Why is it called "Virgil"?</h2>
+<div class="outline-text-2" id="text-orgf6132e3">
 <p>
 The successor to Plan 9 was called "Inferno" after the first cantica
 in Dante's "Divine Comedy". The 9P protocol we use today is
-technically called 9P2000 in the Plan 9 Operating System, or "Styx" in
-the Inferno Operating System. 9P2000 and Styx are the same protocol.
+technically called 9P2000 in Plan 9, and "Styx" in Inferno. 9P2000 and
+Styx are the same protocol.
 </p>
 
 <p>
 In Dante's Divine Comedy, the poet Virgil guides Dante through Hell,
-Purgatory, and Paradise. 
-</p>
-</div>
-</div>
-<div id="outline-container-org731dc65" class="outline-2">
-<h2 id="org731dc65">How to test your 9P fileserver</h2>
-<div class="outline-text-2" id="text-org731dc65">
-<p>
-Once you have a file server that passes all of the tests in Virgil, here is how you can test it!
+Purgatory, and Paradise.
 </p>
 
 <p>
-If your code doesn't natively support TCP/IP, you can use the <code>socat</code> command to serve it for you:
+You may feel like you are going on a similar journey as you implement
+a 9P server and perhaps you will be glad to have a guide of your own.
+</p>
+</div>
+</div>
+<div id="outline-container-org8c22599" class="outline-2">
+<h2 id="org8c22599">How to test your 9P fileserver</h2>
+<div class="outline-text-2" id="text-org8c22599">
+<p>
+Once you have a file server that passes all of the tests in Virgil,
+here is how you can use it from a real operating system:
+</p>
+
+<p>
+To start, if your code doesn't natively support TCP/IP, you can use
+the <code>socat</code> command to serve it for you:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">socat TCP-LISTEN:4755,reuseaddr,fork EXEC:"example-server"
-
+<pre class="src src-sh">socat TCP-LISTEN:4755,reuseaddr,fork EXEC:"example.py"
 </pre>
 </div>
 </div>
-<div id="outline-container-orgeebb6c9" class="outline-3">
-<h3 id="orgeebb6c9">Linux</h3>
-<div class="outline-text-3" id="text-orgeebb6c9">
+<div id="outline-container-orgda8f548" class="outline-3">
+<h3 id="orgda8f548">Linux</h3>
+<div class="outline-text-3" id="text-orgda8f548">
+<p>
+Here is how to mount a 9P file server in Linux:
+</p>
+
 <p>
 If you don't have a mount point for your 9P server, make one:
 </p>
@@ -558,7 +583,7 @@ my version of QEMU uses to route out of the VM to my local machine.
 </div>
 
 <p>
-Check out your new 9P server!
+Then, check out your new 9P server!
 </p>
 
 <div class="org-src-container">
@@ -567,12 +592,12 @@ Check out your new 9P server!
 </div>
 </div>
 </div>
-<div id="outline-container-org9b231cc" class="outline-3">
-<h3 id="org9b231cc">Plan 9</h3>
-<div class="outline-text-3" id="text-org9b231cc">
+<div id="outline-container-org5616866" class="outline-3">
+<h3 id="org5616866">Plan 9</h3>
+<div class="outline-text-3" id="text-org5616866">
 <p>
 Assuming that your version of Plan 9 is on the same machine as your 9P
-server, then run this command inside of Plan 9:
+server, here are the commands to run inside of Plan 9:
 </p>
 
 <div class="org-src-container">
@@ -590,6 +615,16 @@ Once it is mounted, then you can check it out using <code>ls</code>:
 </pre>
 </div>
 </div>
+</div>
+</div>
+<div id="outline-container-org5a4f44e" class="outline-2">
+<h2 id="org5a4f44e">Closing Thoughts</h2>
+<div class="outline-text-2" id="text-org5a4f44e">
+<p>
+Let me know if you use Virgil! You can use my
+<a href="https://joel.franusic.com/contact/">contact page</a> to see how to reach me. You can also find me on the
+#wanix-talk channel in the <a href="https://discord.com/invite/JraBdNHuuP">progrium Discord</a>.
+</p>
 </div>
 </div>
 </div>
