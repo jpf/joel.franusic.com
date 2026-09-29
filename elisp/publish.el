@@ -6,21 +6,32 @@
 ;;
 ;; or just `make publish` (see the Makefile in the repo root).
 ;;
+;; Or interactively, from within Emacs: `M-x load-file' this file (once
+;; per session), then `M-x org-static-blog-publish' to rebuild the whole
+;; blog, or `M-x org-static-blog-publish-file' while visiting a post to
+;; publish just that one post. Paths below are resolved relative to
+;; this file's own location, not `default-directory', so this works
+;; the same whether it's loaded in batch mode or from any buffer.
+;;
 ;; This only manages the blog (the .org files in posts/, published as
 ;; flat *.html files at the repo root). Everything else on the site
 ;; (index.html, contact/, krazy_kat/, virgil/, ...) is hand-written
 ;; static HTML and is untouched by this script.
 
-(add-to-list 'load-path (expand-file-name "elisp" default-directory))
+(defvar joel-blog-root
+  (expand-file-name ".." (file-name-directory (or load-file-name buffer-file-name)))
+  "Root directory of the joel.franusic.com repo.")
+
+(add-to-list 'load-path (expand-file-name "elisp" joel-blog-root))
 (require 'org-static-blog)
 
 ;; --- Basic site settings -----------------------------------------------
 
 (setq org-static-blog-publish-title "Joël Franusic")
 (setq org-static-blog-publish-url "https://joel.franusic.com/")
-(setq org-static-blog-publish-directory (expand-file-name "./"))
-(setq org-static-blog-posts-directory (expand-file-name "posts/"))
-(setq org-static-blog-drafts-directory (expand-file-name "drafts/"))
+(setq org-static-blog-publish-directory (file-name-as-directory joel-blog-root))
+(setq org-static-blog-posts-directory (expand-file-name "posts/" joel-blog-root))
+(setq org-static-blog-drafts-directory (expand-file-name "drafts/" joel-blog-root))
 (setq org-static-blog-langcode "en")
 
 ;; Don't clobber the hand-written homepage (index.html) or the pretty
