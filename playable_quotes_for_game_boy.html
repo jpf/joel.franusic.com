@@ -43,26 +43,6 @@
 </div></div>
 <div id="content">
 <div class="post-date">14 Sep 2021</div><h1 class="post-title"><a href="https://joel.franusic.com/playable_quotes_for_game_boy.html">How We Made Playable Quotes for the Game Boy</a></h1>
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org40b4e31">1. What is a Playable Quote?</a></li>
-<li><a href="#org79e97fb">2. What can you do with Playable Quotes?</a></li>
-<li><a href="#org9724d64">3. How Playable Quotes were made</a>
-<ul>
-<li><a href="#org636c123">3.1. Conception</a></li>
-<li><a href="#orgdfa4d6e">3.2. PyBoy Hacks</a></li>
-<li><a href="#org9578cc4">3.3. Tenmile Vision and Prototype</a></li>
-<li><a href="#org6ca0874">3.4. Production Mode</a></li>
-</ul>
-</li>
-<li><a href="#orgcfb14d7">4. Suggestions for Future Work</a></li>
-<li><a href="#org45c2452">5. Advice</a></li>
-<li><a href="#orgc620d9b">6. Thanks</a></li>
-</ul>
-</div>
-</nav>
 <div>
 <a href="https://tenmile.quote.games/player.html#drop=https://joel.franusic.com/assets/TUFF-ca28-3d23650d.png">
 <video muted autoplay loop width="250">
@@ -97,9 +77,9 @@ This is a long post, so we'll start with an overview of what we'll be covering:
 <li>Thanks</li>
 </ol>
 
-<div id="outline-container-org40b4e31" class="outline-2">
-<h2 id="org40b4e31"><span class="section-number-2">1.</span> What is a Playable Quote?</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgeab45b3" class="outline-2">
+<h2 id="orgeab45b3">What is a Playable Quote?</h2>
+<div class="outline-text-2" id="text-orgeab45b3">
 <p>
 In its most basic form, a Playable Quote is two things:
 </p>
@@ -139,9 +119,9 @@ Here is a quote for the game Tetris (you can clear a few lines at a time, but yo
 </div>
 </div>
 
-<div id="outline-container-org79e97fb" class="outline-2">
-<h2 id="org79e97fb"><span class="section-number-2">2.</span> What can you do with Playable Quotes?</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org8b0b598" class="outline-2">
+<h2 id="org8b0b598">What can you do with Playable Quotes?</h2>
+<div class="outline-text-2" id="text-org8b0b598">
 <p>
 Using the tools we have made so far, you can use Playable Quotes to create, play, and share moments from almost any Game Boy game (not every game is fully supported by the emulator we decided to build on). We hope that people will make use of these tools to do things like:
 </p>
@@ -171,9 +151,9 @@ What follows is a detailed story of how we built Playable Quotes, from conceptio
 </div>
 </div>
 
-<div id="outline-container-org9724d64" class="outline-2">
-<h2 id="org9724d64"><span class="section-number-2">3.</span> How Playable Quotes were made</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org70cb23a" class="outline-2">
+<h2 id="org70cb23a">How Playable Quotes were made</h2>
+<div class="outline-text-2" id="text-org70cb23a">
 <p>
 The concept behind playable quotes could have been realized decades ago, but ideas like this rarely spring into existence in an organized manner. If you'll allow some simplifications, the story of how we made Playable Quotes divides organizes into four coherent chapters:
 </p>
@@ -186,9 +166,9 @@ The concept behind playable quotes could have been realized decades ago, but ide
 </ol>
 </div>
 
-<div id="outline-container-org636c123" class="outline-3">
-<h3 id="org636c123"><span class="section-number-3">3.1.</span> Conception</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-org456b435" class="outline-3">
+<h3 id="org456b435">Conception</h3>
+<div class="outline-text-3" id="text-org456b435">
 <p>
 The concept for Playable Quotes came from <a href="https://adamsmith.as/">Adam Smith</a>. It extends research being done in Adam's <a href="https://designreasoning.soe.ucsc.edu/">Design Reasoning Lab</a> on making search engines that understand that games and other interactive media contain a vast space of possible moments (like the collection of paragraphs in a book). It also connects to his desire to be able to share moments in games with the students in his various game design classes and for the younger students to be able to share back relevant moments from their own generation of videogames.
 </p>
@@ -223,9 +203,9 @@ Now that we had identified a concrete first technical step, it was time to get s
 </div>
 </div>
 
-<div id="outline-container-orgdfa4d6e" class="outline-3">
-<h3 id="orgdfa4d6e"><span class="section-number-3">3.2.</span> PyBoy Hacks</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-org1b3eeac" class="outline-3">
+<h3 id="org1b3eeac">PyBoy Hacks</h3>
+<div class="outline-text-3" id="text-org1b3eeac">
 <p>
 We both started work the next day. Adam had found <a href="https://github.com/Baekalfen/PyBoy">PyBoy</a>, a Game Boy emulator written in Python and made some promising early progress in his experimentations. Also a big fan of Python, Joël decided to try it out too.
 </p>
@@ -317,11 +297,7 @@ Because of this discovery, we decided to try out a JavaScript based emulator cal
 Meanwhile, Adam had been making progress by changing his code from writing a CSV file, which was really slow due to file I/O constraints, to an in-memory model which was much faster. This allowed him to prototype an interactive quote-editing widget that could visualize the range of memory needed to support a segment of recorded gameplay and also show you how much more gameplay could be accessed with the current memory slice.
 </p>
 
-
-<figure id="orga493077">
-<img src="file:///assets/tetris-manual-cropping-and-validity-preview.png" alt="&quot;Visualization of a UI that can be used to crop a Playable Quote&quot;">
-
-</figure>
+<img src="/assets/tetris-manual-cropping-and-validity-preview.png" alt="Visualization of a UI that can be used to crop a Playable Quote">
 
 <p>
 This widget was slow to respond, difficult to share because it was written in Python (rather than JavaScript), and pretty inscrutible to anyone who wasn't already familiar with low-level embedded programming concerns. This told us that there would be a high-end skill to crafting quotes with perfectly sculpted memory bounds, but it wasn't going to help us communicate the idea to others very well.
@@ -333,9 +309,9 @@ By this point in the project, it was July 7th, a week since we had started on th
 </div>
 </div>
 
-<div id="outline-container-org9578cc4" class="outline-3">
-<h3 id="org9578cc4"><span class="section-number-3">3.3.</span> Tenmile Vision and Prototype</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-org72f3391" class="outline-3">
+<h3 id="org72f3391">Tenmile Vision and Prototype</h3>
+<div class="outline-text-3" id="text-org72f3391">
 <p>
 Something that this Playable Quotes project has really highlighted for Joël is how useful it is to regularly take time to check assumptions and do lightweight planning. It was unreasonably effective to have a few hours of distraction-free time to reflect on what we had learned so far, plan on what we wanted to do next, and clarify each of our goals for this project. (Adam is more familiar with this model from graduate student mentoring in his lab.)
 </p>
@@ -408,9 +384,9 @@ Eventually, we got to the point where it was clear that we had sort of painted o
 </div>
 </div>
 
-<div id="outline-container-org6ca0874" class="outline-3">
-<h3 id="org6ca0874"><span class="section-number-3">3.4.</span> Production Mode</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-org8a18725" class="outline-3">
+<h3 id="org8a18725">Production Mode</h3>
+<div class="outline-text-3" id="text-org8a18725">
 <p>
 The main reason for the rewrite had to do with how we handled moving between the various modes like "playing", "recording", "saving", and so on. This was all handled by a state machine, which only modeled a subset of the states we wanted. We spent some time figuring out what we wanted our new state machine to look like. Once we were happy that we had taken all states into account, we created a new project on Glitch that was built around those states.
 </p>
@@ -456,9 +432,9 @@ With all of that done, all that was left was announcing the project, which we di
 </div>
 </div>
 
-<div id="outline-container-orgcfb14d7" class="outline-2">
-<h2 id="orgcfb14d7"><span class="section-number-2">4.</span> Suggestions for Future Work</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org1c90e19" class="outline-2">
+<h2 id="org1c90e19">Suggestions for Future Work</h2>
+<div class="outline-text-2" id="text-org1c90e19">
 <p>
 We've only scratched the surface of what is possible with Playable Quotes, there is a lot more to do. More than we can do on our own, we could use your help!
 </p>
@@ -477,9 +453,9 @@ Features that we could use help with include, but are not limited to the followi
 </div>
 </div>
 
-<div id="outline-container-org45c2452" class="outline-2">
-<h2 id="org45c2452"><span class="section-number-2">5.</span> Advice</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orga107ead" class="outline-2">
+<h2 id="orga107ead">Advice</h2>
+<div class="outline-text-2" id="text-orga107ead">
 <p>
 If you're working on making your own Playable Quotes, here are some things that we hope makes your life a little easier:
 </p>
@@ -493,9 +469,9 @@ Get to a drag-and-drop interface as soon as you can. Development will get a lot 
 </div>
 </div>
 
-<div id="outline-container-orgc620d9b" class="outline-2">
-<h2 id="orgc620d9b"><span class="section-number-2">6.</span> Thanks</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org05594b0" class="outline-2">
+<h2 id="org05594b0">Thanks</h2>
+<div class="outline-text-2" id="text-org05594b0">
 <p>
 We would like to thank the following people for their explicit or implicit help with this project:
 </p>

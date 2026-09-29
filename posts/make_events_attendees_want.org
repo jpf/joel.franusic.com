@@ -29,8 +29,9 @@ these groups. Most events will provide some benefit to all three of
 these groups, but usually one of these groups will benefit more than
 the others.
 
-#+attr_html: :alt "A triangle with \"Attendees\" at the top, \"Sponsors\" on the left, and \"Organizers\" on the right."
-[[/assets/attendees-sponsors-organizers.png]]
+#+begin_export html
+<img src="/assets/attendees-sponsors-organizers.png" alt="A triangle with \"Attendees\" at the top, \"Sponsors\" on the left, and \"Organizers\" on the right.">
+#+end_export
 
 These aren't clean categories, most events don't fall cleanly into
 just one category. That said, some specific events do fit into one

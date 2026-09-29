@@ -5,22 +5,14 @@
 <description><![CDATA[Joël Franusic]]></description>
 <link>https://joel.franusic.com/</link>
 <atom:link href="https://joel.franusic.com/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Tue, 29 Sep 2026 01:18:52 -0700</lastBuildDate>
+<lastBuildDate>Tue, 29 Sep 2026 01:26:48 -0700</lastBuildDate>
 <item>
   <title><![CDATA[Hello from org-mode]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orge597e59">1. Hello from org-mode</a></li>
-</ul>
-</div>
-</nav>
 
-<div id="outline-container-orge597e59" class="outline-2">
-<h2 id="orge597e59"><span class="section-number-2">1.</span> Hello from org-mode</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orga1f983c" class="outline-2">
+<h2 id="orga1f983c">Hello from org-mode</h2>
+<div class="outline-text-2" id="text-orga1f983c">
 <p>
 With some help from Claude, I've ported this website over from using
 Jekyll to using org-mode. My hope is that I can eventually stay inside
@@ -41,26 +33,6 @@ We will see, I suppose.
 <item>
   <title><![CDATA[How We Made Playable Quotes for the Game Boy]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org40b4e31">1. What is a Playable Quote?</a></li>
-<li><a href="#org79e97fb">2. What can you do with Playable Quotes?</a></li>
-<li><a href="#org9724d64">3. How Playable Quotes were made</a>
-<ul>
-<li><a href="#org636c123">3.1. Conception</a></li>
-<li><a href="#orgdfa4d6e">3.2. PyBoy Hacks</a></li>
-<li><a href="#org9578cc4">3.3. Tenmile Vision and Prototype</a></li>
-<li><a href="#org6ca0874">3.4. Production Mode</a></li>
-</ul>
-</li>
-<li><a href="#orgcfb14d7">4. Suggestions for Future Work</a></li>
-<li><a href="#org45c2452">5. Advice</a></li>
-<li><a href="#orgc620d9b">6. Thanks</a></li>
-</ul>
-</div>
-</nav>
 <div>
 <a href="https://tenmile.quote.games/player.html#drop=https://joel.franusic.com/assets/TUFF-ca28-3d23650d.png">
 <video muted autoplay loop width="250">
@@ -95,9 +67,9 @@ This is a long post, so we'll start with an overview of what we'll be covering:
 <li>Thanks</li>
 </ol>
 
-<div id="outline-container-org40b4e31" class="outline-2">
-<h2 id="org40b4e31"><span class="section-number-2">1.</span> What is a Playable Quote?</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgeab45b3" class="outline-2">
+<h2 id="orgeab45b3">What is a Playable Quote?</h2>
+<div class="outline-text-2" id="text-orgeab45b3">
 <p>
 In its most basic form, a Playable Quote is two things:
 </p>
@@ -137,9 +109,9 @@ Here is a quote for the game Tetris (you can clear a few lines at a time, but yo
 </div>
 </div>
 
-<div id="outline-container-org79e97fb" class="outline-2">
-<h2 id="org79e97fb"><span class="section-number-2">2.</span> What can you do with Playable Quotes?</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org8b0b598" class="outline-2">
+<h2 id="org8b0b598">What can you do with Playable Quotes?</h2>
+<div class="outline-text-2" id="text-org8b0b598">
 <p>
 Using the tools we have made so far, you can use Playable Quotes to create, play, and share moments from almost any Game Boy game (not every game is fully supported by the emulator we decided to build on). We hope that people will make use of these tools to do things like:
 </p>
@@ -169,9 +141,9 @@ What follows is a detailed story of how we built Playable Quotes, from conceptio
 </div>
 </div>
 
-<div id="outline-container-org9724d64" class="outline-2">
-<h2 id="org9724d64"><span class="section-number-2">3.</span> How Playable Quotes were made</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org70cb23a" class="outline-2">
+<h2 id="org70cb23a">How Playable Quotes were made</h2>
+<div class="outline-text-2" id="text-org70cb23a">
 <p>
 The concept behind playable quotes could have been realized decades ago, but ideas like this rarely spring into existence in an organized manner. If you'll allow some simplifications, the story of how we made Playable Quotes divides organizes into four coherent chapters:
 </p>
@@ -184,9 +156,9 @@ The concept behind playable quotes could have been realized decades ago, but ide
 </ol>
 </div>
 
-<div id="outline-container-org636c123" class="outline-3">
-<h3 id="org636c123"><span class="section-number-3">3.1.</span> Conception</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-org456b435" class="outline-3">
+<h3 id="org456b435">Conception</h3>
+<div class="outline-text-3" id="text-org456b435">
 <p>
 The concept for Playable Quotes came from <a href="https://adamsmith.as/">Adam Smith</a>. It extends research being done in Adam's <a href="https://designreasoning.soe.ucsc.edu/">Design Reasoning Lab</a> on making search engines that understand that games and other interactive media contain a vast space of possible moments (like the collection of paragraphs in a book). It also connects to his desire to be able to share moments in games with the students in his various game design classes and for the younger students to be able to share back relevant moments from their own generation of videogames.
 </p>
@@ -221,9 +193,9 @@ Now that we had identified a concrete first technical step, it was time to get s
 </div>
 </div>
 
-<div id="outline-container-orgdfa4d6e" class="outline-3">
-<h3 id="orgdfa4d6e"><span class="section-number-3">3.2.</span> PyBoy Hacks</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-org1b3eeac" class="outline-3">
+<h3 id="org1b3eeac">PyBoy Hacks</h3>
+<div class="outline-text-3" id="text-org1b3eeac">
 <p>
 We both started work the next day. Adam had found <a href="https://github.com/Baekalfen/PyBoy">PyBoy</a>, a Game Boy emulator written in Python and made some promising early progress in his experimentations. Also a big fan of Python, Joël decided to try it out too.
 </p>
@@ -315,11 +287,7 @@ Because of this discovery, we decided to try out a JavaScript based emulator cal
 Meanwhile, Adam had been making progress by changing his code from writing a CSV file, which was really slow due to file I/O constraints, to an in-memory model which was much faster. This allowed him to prototype an interactive quote-editing widget that could visualize the range of memory needed to support a segment of recorded gameplay and also show you how much more gameplay could be accessed with the current memory slice.
 </p>
 
-
-<figure id="orga493077">
-<img src="file:///assets/tetris-manual-cropping-and-validity-preview.png" alt="&quot;Visualization of a UI that can be used to crop a Playable Quote&quot;">
-
-</figure>
+<img src="/assets/tetris-manual-cropping-and-validity-preview.png" alt="Visualization of a UI that can be used to crop a Playable Quote">
 
 <p>
 This widget was slow to respond, difficult to share because it was written in Python (rather than JavaScript), and pretty inscrutible to anyone who wasn't already familiar with low-level embedded programming concerns. This told us that there would be a high-end skill to crafting quotes with perfectly sculpted memory bounds, but it wasn't going to help us communicate the idea to others very well.
@@ -331,9 +299,9 @@ By this point in the project, it was July 7th, a week since we had started on th
 </div>
 </div>
 
-<div id="outline-container-org9578cc4" class="outline-3">
-<h3 id="org9578cc4"><span class="section-number-3">3.3.</span> Tenmile Vision and Prototype</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-org72f3391" class="outline-3">
+<h3 id="org72f3391">Tenmile Vision and Prototype</h3>
+<div class="outline-text-3" id="text-org72f3391">
 <p>
 Something that this Playable Quotes project has really highlighted for Joël is how useful it is to regularly take time to check assumptions and do lightweight planning. It was unreasonably effective to have a few hours of distraction-free time to reflect on what we had learned so far, plan on what we wanted to do next, and clarify each of our goals for this project. (Adam is more familiar with this model from graduate student mentoring in his lab.)
 </p>
@@ -406,9 +374,9 @@ Eventually, we got to the point where it was clear that we had sort of painted o
 </div>
 </div>
 
-<div id="outline-container-org6ca0874" class="outline-3">
-<h3 id="org6ca0874"><span class="section-number-3">3.4.</span> Production Mode</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-org8a18725" class="outline-3">
+<h3 id="org8a18725">Production Mode</h3>
+<div class="outline-text-3" id="text-org8a18725">
 <p>
 The main reason for the rewrite had to do with how we handled moving between the various modes like "playing", "recording", "saving", and so on. This was all handled by a state machine, which only modeled a subset of the states we wanted. We spent some time figuring out what we wanted our new state machine to look like. Once we were happy that we had taken all states into account, we created a new project on Glitch that was built around those states.
 </p>
@@ -454,9 +422,9 @@ With all of that done, all that was left was announcing the project, which we di
 </div>
 </div>
 
-<div id="outline-container-orgcfb14d7" class="outline-2">
-<h2 id="orgcfb14d7"><span class="section-number-2">4.</span> Suggestions for Future Work</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org1c90e19" class="outline-2">
+<h2 id="org1c90e19">Suggestions for Future Work</h2>
+<div class="outline-text-2" id="text-org1c90e19">
 <p>
 We've only scratched the surface of what is possible with Playable Quotes, there is a lot more to do. More than we can do on our own, we could use your help!
 </p>
@@ -475,9 +443,9 @@ Features that we could use help with include, but are not limited to the followi
 </div>
 </div>
 
-<div id="outline-container-org45c2452" class="outline-2">
-<h2 id="org45c2452"><span class="section-number-2">5.</span> Advice</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orga107ead" class="outline-2">
+<h2 id="orga107ead">Advice</h2>
+<div class="outline-text-2" id="text-orga107ead">
 <p>
 If you're working on making your own Playable Quotes, here are some things that we hope makes your life a little easier:
 </p>
@@ -491,9 +459,9 @@ Get to a drag-and-drop interface as soon as you can. Development will get a lot 
 </div>
 </div>
 
-<div id="outline-container-orgc620d9b" class="outline-2">
-<h2 id="orgc620d9b"><span class="section-number-2">6.</span> Thanks</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org05594b0" class="outline-2">
+<h2 id="org05594b0">Thanks</h2>
+<div class="outline-text-2" id="text-org05594b0">
 <p>
 We would like to thank the following people for their explicit or implicit help with this project:
 </p>
@@ -537,23 +505,6 @@ The folks who reviewed and gave feedback on early versions of the project includ
 <item>
   <title><![CDATA[Make events attendees want]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgc7d4678">1. Events designed to benefit sponsors</a></li>
-<li><a href="#org619e608">2. Events designed to benefit the organizers</a></li>
-<li><a href="#org192e397">3. Events designed to benefit the attendees</a></li>
-<li><a href="#org697cf0c">4. No event can exist without attendees</a></li>
-<li><a href="#org3e497e4">5. How to design an attendee focused event</a></li>
-<li><a href="#orga05f5c8">6. Things to watch out for when designing an attendee focused event</a></li>
-<li><a href="#orgedbe78a">7. Do not compromise for sponsors</a></li>
-<li><a href="#org1d4e117">8. Never share your attendee list</a></li>
-<li><a href="#org0064f01">9. Do not measure the success of your event by the number of attendees</a></li>
-<li><a href="#org2ded732">10. Closing</a></li>
-</ul>
-</div>
-</nav>
 <blockquote class="twitter-tweet" lang="en">
 <p lang="en" dir="ltr">
 What makes a great event? The attendees. How do you get
@@ -588,11 +539,7 @@ these groups, but usually one of these groups will benefit more than
 the others.
 </p>
 
-
-<figure id="org3ad12dd">
-<img src="file:///assets/attendees-sponsors-organizers.png" alt="&quot;A triangle with \&quot;Attendees\&quot; at the top, \&quot;Sponsors\&quot; on the left, and \&quot;Organizers\&quot; on the right.&quot;">
-
-</figure>
+<img src="/assets/attendees-sponsors-organizers.png" alt="A triangle with \"Attendees\" at the top, \"Sponsors\" on the left, and \"Organizers\" on the right.">
 
 <p>
 These aren't clean categories, most events don't fall cleanly into
@@ -601,9 +548,9 @@ category, so I will use those events as examples of each category
 below.
 </p>
 
-<div id="outline-container-orgc7d4678" class="outline-2">
-<h2 id="orgc7d4678"><span class="section-number-2">1.</span> Events designed to benefit sponsors</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org400f04e" class="outline-2">
+<h2 id="org400f04e">Events designed to benefit sponsors</h2>
+<div class="outline-text-2" id="text-org400f04e">
 <p>
 These are events like trade shows and exhibitions. Examples of these
 kinds of events are CES, COMDEX, and SXSW. The main goal of these
@@ -619,9 +566,9 @@ from sponsors, sponsored parties, and so on.
 </div>
 </div>
 
-<div id="outline-container-org619e608" class="outline-2">
-<h2 id="org619e608"><span class="section-number-2">2.</span> Events designed to benefit the organizers</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgf33e9a6" class="outline-2">
+<h2 id="orgf33e9a6">Events designed to benefit the organizers</h2>
+<div class="outline-text-2" id="text-orgf33e9a6">
 <p>
 Events in this category are easy to identify because the name of the
 organizer is usually part of the event name. For example:
@@ -641,9 +588,9 @@ pitches for products or services of dubious value.
 </div>
 </div>
 
-<div id="outline-container-org192e397" class="outline-2">
-<h2 id="org192e397"><span class="section-number-2">3.</span> Events designed to benefit the attendees</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgdee51ee" class="outline-2">
+<h2 id="orgdee51ee">Events designed to benefit the attendees</h2>
+<div class="outline-text-2" id="text-orgdee51ee">
 <p>
 These sorts of events are not always easy to distinguish from others,
 the best way to determine if an event was designed to benefit the
@@ -660,9 +607,9 @@ and meetups with very specialized topics.
 </div>
 </div>
 
-<div id="outline-container-org697cf0c" class="outline-2">
-<h2 id="org697cf0c"><span class="section-number-2">4.</span> No event can exist without attendees</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orga695077" class="outline-2">
+<h2 id="orga695077">No event can exist without attendees</h2>
+<div class="outline-text-2" id="text-orga695077">
 <p>
 Of these three groups, only one is key to running an event: The
 attendees. Without attendees, you have no event.
@@ -696,9 +643,9 @@ than if they were designed otherwise.
 </div>
 </div>
 
-<div id="outline-container-org3e497e4" class="outline-2">
-<h2 id="org3e497e4"><span class="section-number-2">5.</span> How to design an attendee focused event</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org4921c0e" class="outline-2">
+<h2 id="org4921c0e">How to design an attendee focused event</h2>
+<div class="outline-text-2" id="text-org4921c0e">
 <p>
 This isn't a step-by-step guide, this is an outline, the best
 practices I've seen in my favorite events.
@@ -760,9 +707,9 @@ personally.
 </div>
 </div>
 
-<div id="outline-container-orga05f5c8" class="outline-2">
-<h2 id="orga05f5c8"><span class="section-number-2">6.</span> Things to watch out for when designing an attendee focused event</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgac2665c" class="outline-2">
+<h2 id="orgac2665c">Things to watch out for when designing an attendee focused event</h2>
+<div class="outline-text-2" id="text-orgac2665c">
 <p>
 If you make decisions from the perspective of an attendee, most of
 what you'll need to do for your event will be obvious. Not everything
@@ -773,9 +720,9 @@ focused event:
 </div>
 </div>
 
-<div id="outline-container-orgedbe78a" class="outline-2">
-<h2 id="orgedbe78a"><span class="section-number-2">7.</span> Do not compromise for sponsors</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org1c605d1" class="outline-2">
+<h2 id="org1c605d1">Do not compromise for sponsors</h2>
+<div class="outline-text-2" id="text-org1c605d1">
 <p>
 It hard enough to find a sponsor for an event. It's even harder to
 find a sponsor that doesn't ask you to make compromises.
@@ -835,9 +782,9 @@ go first?"
 </div>
 </div>
 
-<div id="outline-container-org1d4e117" class="outline-2">
-<h2 id="org1d4e117"><span class="section-number-2">8.</span> Never share your attendee list</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgf06ef69" class="outline-2">
+<h2 id="orgf06ef69">Never share your attendee list</h2>
+<div class="outline-text-2" id="text-orgf06ef69">
 <p>
 As an event organizer, the most tangible thing of value that your
 event creates is your list of attendees. This list is not just a list
@@ -867,9 +814,9 @@ because you've made a promise to your attendees not to do that.
 </div>
 </div>
 
-<div id="outline-container-org0064f01" class="outline-2">
-<h2 id="org0064f01"><span class="section-number-2">9.</span> Do not measure the success of your event by the number of attendees</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-orga7de268" class="outline-2">
+<h2 id="orga7de268">Do not measure the success of your event by the number of attendees</h2>
+<div class="outline-text-2" id="text-orga7de268">
 <p>
 Measuring the success of your event by the number of attendees is a
 "vanity metric". Instead, I suggest using this metric to measure your
@@ -900,9 +847,9 @@ be better.
 </div>
 </div>
 
-<div id="outline-container-org2ded732" class="outline-2">
-<h2 id="org2ded732"><span class="section-number-2">10.</span> Closing</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-org29e130b" class="outline-2">
+<h2 id="org29e130b">Closing</h2>
+<div class="outline-text-2" id="text-org29e130b">
 <p>
 In this modern age of instant online communication, why do people
 continue to attend events in-person?
@@ -929,18 +876,6 @@ Make events that people want.
 <item>
   <title><![CDATA[Notes on the book "On Death and Dying" by Dr. Elisabeth Kübler-Ross]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org550c49e">1. Insights into the modern views of death</a></li>
-<li><a href="#org12ec98f">2. The importance of facing our own mortality</a></li>
-<li><a href="#org87a325e">3. How to interact with the dying</a></li>
-<li><a href="#orgaa97d25">4. Closing thoughts from the author</a></li>
-<li><a href="#org0f502f6">5. Comments? Suggestions?</a></li>
-</ul>
-</div>
-</nav>
 <div class="clipping">
 <span class="content">
 <p class="highlight">Death belongs to life as birth does. The walk is in the raising of the foot as in the laying of it down.</p>
@@ -990,9 +925,9 @@ My highlights on this book fall into a few categories:
 <li>Closing thoughts from the author</li>
 </ol>
 
-<div id="outline-container-org550c49e" class="outline-2">
-<h2 id="org550c49e"><span class="section-number-2">1.</span> Insights into the modern views of death</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org6af4562" class="outline-2">
+<h2 id="org6af4562">Insights into the modern views of death</h2>
+<div class="outline-text-2" id="text-org6af4562">
 <div class="clipping">
 <span class="content">
 <p class="highlight">The more we are making advancements in science, the more we seem to fear and deny the reality of death. How is this possible?</p>
@@ -1055,9 +990,9 @@ Another insight from the book, that I wasn't able to capture in a highlight, is 
 </div>
 </div>
 
-<div id="outline-container-org12ec98f" class="outline-2">
-<h2 id="org12ec98f"><span class="section-number-2">2.</span> The importance of facing our own mortality</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgf0a3ff1" class="outline-2">
+<h2 id="orgf0a3ff1">The importance of facing our own mortality</h2>
+<div class="outline-text-2" id="text-orgf0a3ff1">
 <div class="clipping">
 <span class="content">
 <p class="highlight">Each one of us has the need to avoid this issue, yet each one of us has to face it sooner or later. If all of us could make a start by contemplating the possibility of our own personal death, we may effect many things, most important of all the welfare of our patients, our families, and finally perhaps our nation.</p>
@@ -1137,9 +1072,9 @@ Another insight from the book, that I wasn't able to capture in a highlight, is 
 </div>
 </div>
 
-<div id="outline-container-org87a325e" class="outline-2">
-<h2 id="org87a325e"><span class="section-number-2">3.</span> How to interact with the dying</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgb5eac38" class="outline-2">
+<h2 id="orgb5eac38">How to interact with the dying</h2>
+<div class="outline-text-2" id="text-orgb5eac38">
 <div class="clipping">
 	<span class="content">
 	<p class="highlight">let the relative talk, cry, or scream if necessary. Let them share and ventilate, but be available. The relative has a long time of mourning ahead of him, when the problems for the dead are solved.</p>
@@ -1395,9 +1330,9 @@ The people taking care of the dying also need to take time to themselves:
 </div>
 </div>
 
-<div id="outline-container-orgaa97d25" class="outline-2">
-<h2 id="orgaa97d25"><span class="section-number-2">4.</span> Closing thoughts from the author</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orged2c69a" class="outline-2">
+<h2 id="orged2c69a">Closing thoughts from the author</h2>
+<div class="outline-text-2" id="text-orged2c69a">
 <div class="clipping">
 	<span class="content">
 	<p class="highlight">If we attempt to summarize briefly what these patients have taught us, the outstanding fact, to my mind, is that they are all aware of the seriousness of their illness whether they are told or not.</p>
@@ -1534,9 +1469,9 @@ The people taking care of the dying also need to take time to themselves:
 </div>
 </div>
 
-<div id="outline-container-org0f502f6" class="outline-2">
-<h2 id="org0f502f6"><span class="section-number-2">5.</span> Comments? Suggestions?</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org0908b88" class="outline-2">
+<h2 id="org0908b88">Comments? Suggestions?</h2>
+<div class="outline-text-2" id="text-org0908b88">
 <p>
 Please <a href="file:///contact">contact me</a> if you have any comments on this book
 or on my notes thereof. Also, I'd love to know about other books, articles,
@@ -1557,18 +1492,6 @@ videos, etc on these topics. Thanks!
 <item>
   <title><![CDATA[Notes on the book "Art & Fear" by David Bayles & Ted Orland]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org21e9a13">1. Methodical dedication to art</a></li>
-<li><a href="#org67dbe58">2. Programming as art</a></li>
-<li><a href="#org9356e7c">3. Questions to ask about art</a></li>
-<li><a href="#orgbef2ea4">4. Fun quotes</a></li>
-<li><a href="#org14c1a16">5. Comments? Suggestions?</a></li>
-</ul>
-</div>
-</nav>
 <p>
 <a href="http://www.amazon.com/gp/product/B0042JSQLU/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0042JSQLU&amp;linkCode=as2&amp;tag=joelfran-20&amp;linkId=IAYMK5OLKHYO4T3S">Art &amp; Fear</a>
 is "a book about making art". It covers the long term
@@ -1587,18 +1510,14 @@ The things that I learned from this book fell into three categories:
 <li>Questions to ask about art.</li>
 </ol>
 
-<div id="outline-container-org21e9a13" class="outline-2">
-<h2 id="org21e9a13"><span class="section-number-2">1.</span> Methodical dedication to art</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org8efc07e" class="outline-2">
+<h2 id="org8efc07e">Methodical dedication to art</h2>
+<div class="outline-text-2" id="text-org8efc07e">
 <p>
 If you read nothing else in the book, this is the one thing you must read:
 </p>
 
-
-<figure id="org8793580">
-<img src="file:///assets/img/art-and-fear-page-29.jpg" alt="&quot;A fable on perfection&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-29.jpg" alt="A fable on perfection">
 
 <p>
 As someone who had an ever-growing pile of unfinished personal
@@ -1611,39 +1530,23 @@ more of my side projects done.
 Here are some other selections from the book on this topic:
 </p>
 
+<img src="/assets/img/art-and-fear-page-16.jpg" alt="All you can work on today is in front of you">
 
-<figure id="orgebdaa64">
-<img src="file:///assets/img/art-and-fear-page-16.jpg" alt="&quot;All you can work on today is in front of you&quot;">
+<img src="/assets/img/art-and-fear-page-31.jpg" alt="the seed of your next art work lies in your current piece">
 
-</figure>
-
-
-<figure id="orgd22be63">
-<img src="file:///assets/img/art-and-fear-page-31.jpg" alt="&quot;the seed of your next art work lies in your current piece&quot;">
-
-</figure>
-
-
-<figure id="orgdb2df11">
-<img src="file:///assets/img/art-and-fear-page-61.jpg" alt="&quot;living your life in a way that your work gets done&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-61.jpg" alt="living your life in a way that your work gets done">
 
 <p>
 And finally, some great advice on how to make progress on your art:
 </p>
 
-
-<figure id="org75434b1">
-<img src="file:///assets/img/art-and-fear-page-121.jpg" alt="&quot;Carving out solo time and nibbling away at it&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-121.jpg" alt="Carving out solo time and nibbling away at it">
 </div>
 </div>
 
-<div id="outline-container-org67dbe58" class="outline-2">
-<h2 id="org67dbe58"><span class="section-number-2">2.</span> Programming as art</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgbff7112" class="outline-2">
+<h2 id="orgbff7112">Programming as art</h2>
+<div class="outline-text-2" id="text-orgbff7112">
 <p>
 I didn't expect a book about art to have advice that applied to
 programming. I found it oddly comforting to see how artists face many
@@ -1655,11 +1558,7 @@ Here are some quotes on what people in the technical community refer
 to as "<a href="https://en.wikipedia.org/wiki/Impostor_syndrome">Imposter syndrome</a>"
 </p>
 
-
-<figure id="org7dea1e4">
-<img src="file:///assets/img/art-and-fear-page-13.jpg" alt="&quot;making art precipitates self-doubt&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-13.jpg" alt="making art precipitates self-doubt">
 
 <p>
 "Fear that you are not a real artist causes you to undervalue you
@@ -1672,11 +1571,7 @@ you lack. It has a whole section on this fear, which these quotes
 summarize nicely:
 </p>
 
-
-<figure id="org3ab2c36">
-<img src="file:///assets/img/art-and-fear-page-26.jpg" alt="&quot;no clearer waste of energy than worring about how much talent you have&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-26.jpg" alt="no clearer waste of energy than worring about how much talent you have">
 
 <p>
 "Talent may get someone off the starting blocks faster, but without a
@@ -1708,50 +1603,30 @@ turned to them for thousands of years"
 your head and the qualities of your materials"
 </p>
 
+<img src="/assets/img/art-and-fear-page-58.jpg" alt="Certain tools make certain results possible">
 
-<figure id="orgefb9295">
-<img src="file:///assets/img/art-and-fear-page-58.jpg" alt="&quot;Certain tools make certain results possible&quot;">
-
-</figure>
-
-
-<figure id="org2da7600">
-<img src="file:///assets/img/art-and-fear-page-59.jpg" alt="&quot;The dilemma every programmer confronts again and again&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-59.jpg" alt="The dilemma every programmer confronts again and again">
 
 <p>
 There is also some more general advice on the art of programming:
 </p>
 
+<img src="/assets/img/art-and-fear-page-95.jpg" alt="We don't remember rule followers">
 
-<figure id="orgfe5f007">
-<img src="file:///assets/img/art-and-fear-page-95.jpg" alt="&quot;We don't remember rule followers&quot;">
-
-</figure>
-
-
-<figure id="org1bb7a8a">
-<img src="file:///assets/img/art-and-fear-page-99.jpg" alt="&quot;Craft v. Art&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-99.jpg" alt="Craft v. Art">
 
 <p>
 Lastly, I was struck with how much this quote reminded me of what it's
 like to look at your own old code:
 </p>
 
-
-<figure id="orgd1f7329">
-<img src="file:///assets/img/art-and-fear-page-100.jpg" alt="&quot;On learning from old work&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-100.jpg" alt="On learning from old work">
 </div>
 </div>
 
-<div id="outline-container-org9356e7c" class="outline-2">
-<h2 id="org9356e7c"><span class="section-number-2">3.</span> Questions to ask about art</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org4dd565d" class="outline-2">
+<h2 id="org4dd565d">Questions to ask about art</h2>
+<div class="outline-text-2" id="text-org4dd565d">
 <p>
 The book pointedly distinguishes between art criticism
 and art creation:
@@ -1766,50 +1641,34 @@ It then goes on to give a great framework for artists to use when they
 are considering other artist's work:
 </p>
 
-
-<figure id="org61a9243">
-<img src="file:///assets/img/art-and-fear-page-93.jpg" alt="&quot;Questions to ask of art&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-93.jpg" alt="Questions to ask of art">
 </div>
 </div>
 
-<div id="outline-container-orgbef2ea4" class="outline-2">
-<h2 id="orgbef2ea4"><span class="section-number-2">4.</span> Fun quotes</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orge39f0fb" class="outline-2">
+<h2 id="orge39f0fb">Fun quotes</h2>
+<div class="outline-text-2" id="text-orge39f0fb">
 <p>
 Finally, this book also has some fun quotes that don't fit into the three
 catagories covered above. These are included below:
 </p>
 
-
-<figure id="orgde0fef2">
-<img src="file:///assets/img/art-and-fear-page-68.jpg" alt="&quot;How people change their minds&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-68.jpg" alt="How people change their minds">
 
 <p>
 <i>I seem to remember Steve Jobs telling a group of naysayers something
 similar to the quote below:</i>
 </p>
 
+<img src="/assets/img/art-and-fear-page-57.jpg" alt="How people change their minds">
 
-<figure id="org2a20d30">
-<img src="file:///assets/img/art-and-fear-page-57.jpg" alt="&quot;How people change their minds&quot;">
-
-</figure>
-
-
-<figure id="org53dc065">
-<img src="file:///assets/img/art-and-fear-page-113.jpg" alt="&quot;On asking intresting questions&quot;">
-
-</figure>
+<img src="/assets/img/art-and-fear-page-113.jpg" alt="On asking intresting questions">
 </div>
 </div>
 
-<div id="outline-container-org14c1a16" class="outline-2">
-<h2 id="org14c1a16"><span class="section-number-2">5.</span> Comments? Suggestions?</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgf0e0e03" class="outline-2">
+<h2 id="orgf0e0e03">Comments? Suggestions?</h2>
+<div class="outline-text-2" id="text-orgf0e0e03">
 <p>
 Please <a href="file:///contact">contact me</a> if you have any comments on Art &amp; Fear
 or on my notes thereof. Also, I'd love to know about other books, articles,
@@ -6655,15 +6514,6 @@ Selected highlights of and notes on the book <i>What Technology Wants</i> by Kev
 <item>
   <title><![CDATA[Fun questions to ask Microsoft employees]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org09e6560">1. Postscript</a></li>
-<li><a href="#org9d91ded">2. Questions</a></li>
-</ul>
-</div>
-</nav>
 <p>
 These are questions that I wished people would have asked me when I was a Microsoft employee.
 </p>
@@ -6680,9 +6530,9 @@ Many Microsoft employees won't be able to answer all of these questions, but the
 Ideally, all of these questions are designed to be the start of an interesting conversation.
 </p>
 
-<div id="outline-container-org09e6560" class="outline-2">
-<h2 id="org09e6560"><span class="section-number-2">1.</span> Postscript</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org64bb275" class="outline-2">
+<h2 id="org64bb275">Postscript</h2>
+<div class="outline-text-2" id="text-org64bb275">
 <p>
 This post was written in 2012 and published in 2013. In 2014 I wrote this tweet:
 </p>
@@ -6691,9 +6541,9 @@ This post was written in 2012 and published in 2013. In 2014 I wrote this tweet:
 </div>
 </div>
 
-<div id="outline-container-org9d91ded" class="outline-2">
-<h2 id="org9d91ded"><span class="section-number-2">2.</span> Questions</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org6426822" class="outline-2">
+<h2 id="org6426822">Questions</h2>
+<div class="outline-text-2" id="text-org6426822">
 <p>
 "What was the deal with the Halloween Documents?"
 </p>
@@ -7002,7 +6852,7 @@ Some of these sites aren't strictly REPLs since they don't maintain state, those
 
   </ul></li><li>Bloop:<ul>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
-
+ 
   </ul></li><li><strong><a href="http://en.wikipedia.org/wiki/Brainfuck">brainfuck</a>:</strong><ul>
     <li><a href="http://ideone.com/">http://ideone.com/</a></li>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
@@ -7101,7 +6951,7 @@ Some of these sites aren't strictly REPLs since they don't maintain state, those
 
   </ul></li><li>LOLCODE:<ul>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
-
+ 
   </ul></li><li><a href="http://en.wikipedia.org/wiki/L"><strong>Lua</strong></a><strong>:</strong><ul>
     <li><a href="http://codepad.org/">http://codepad.org/</a></li>
     <li><a href="http://ideone.com/">http://ideone.com/</a></li>
@@ -7113,7 +6963,7 @@ Some of these sites aren't strictly REPLs since they don't maintain state, those
 
   </ul></li><li>Move:<ul>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
-
+ 
   </ul></li><li><strong><a href="http://en.wikipedia.org/wiki/Nemerle">Nemerle</a>:</strong><ul>
     <li><a href="http://ideone.com/">http://ideone.com/</a></li>
 

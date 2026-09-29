@@ -164,8 +164,9 @@ Because of this discovery, we decided to try out a JavaScript based emulator cal
 
 Meanwhile, Adam had been making progress by changing his code from writing a CSV file, which was really slow due to file I/O constraints, to an in-memory model which was much faster. This allowed him to prototype an interactive quote-editing widget that could visualize the range of memory needed to support a segment of recorded gameplay and also show you how much more gameplay could be accessed with the current memory slice.
 
-#+attr_html: :alt "Visualization of a UI that can be used to crop a Playable Quote"
-[[/assets/tetris-manual-cropping-and-validity-preview.png]]
+#+begin_export html
+<img src="/assets/tetris-manual-cropping-and-validity-preview.png" alt="Visualization of a UI that can be used to crop a Playable Quote">
+#+end_export
 
 This widget was slow to respond, difficult to share because it was written in Python (rather than JavaScript), and pretty inscrutible to anyone who wasn't already familiar with low-level embedded programming concerns. This told us that there would be a high-end skill to crafting quotes with perfectly sculpted memory bounds, but it wasn't going to help us communicate the idea to others very well.
 

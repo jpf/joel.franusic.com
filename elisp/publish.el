@@ -34,6 +34,12 @@
 (setq org-static-blog-drafts-directory (expand-file-name "drafts/" joel-blog-root))
 (setq org-static-blog-langcode "en")
 
+;; No auto-numbered headlines ("1. Foo", "3.2. Bar") and no auto-inserted
+;; table of contents on posts. A post can still opt back in with its own
+;; #+OPTIONS: toc:t num:t line, which overrides these defaults.
+(setq org-export-with-toc nil)
+(setq org-export-with-section-numbers nil)
+
 ;; Don't clobber the hand-written homepage (index.html) or the pretty
 ;; permalinks preserved from the old Jekyll site: the blog's own
 ;; generated index/archive/tag/RSS pages live at these names instead.
