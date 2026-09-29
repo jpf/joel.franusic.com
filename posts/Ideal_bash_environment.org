@@ -1,0 +1,39 @@
+#+TITLE: Ideal bash environment
+#+DATE: <2013-05-20 Mon>
+
+#+begin_export html
+<h1>Custom Commands</h1>
+<ul>
+<li>pitch tent:&nbsp;expand on rndmcnlly's original idea to setup a temporary http server at '.'
+<ul>
+<li>In bash?&nbsp;<a href="http://paulbuchheit.blogspot.com/2007/04/webserver-in-bash.html">http://paulbuchheit.blogspot.com/2007/04/webserver-in-bash.html</a></li>
+<li>alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'&nbsp;&nbsp;(<a href="http://www.shell-fu.org/lister.php?id=54">#54</a>)</li>
+</ul>
+</li>
+<li>infect:&nbsp;given a remote ssh host, username and password, set up keys on that host as well as my custom bash environment</li>
+<li>calc:&nbsp;a calculator (bc wrapper?)</li>
+<li>portscan:&nbsp;<a href="http://www.shell-fu.org/lister.php?id=295">#295</a></li>
+<li><a href="http://www.commandlinefu.com/commands/browse">http://www.commandlinefu.com/commands/browse</a></li>
+<li>A twitter command line client might be pretty spiffy, especially if I could pipe to it.</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Prompt</h1>
+<ul>
+<li>Put the time in the prompt (last 4 digits of unixtime? gmt hr/min? ?)</li>
+<li>Put the return value of the last command in prompt (only if non-zero?)</li>
+<li>Show how long it took to run the last command (and perhaps what the last command was?)</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Include 3rd party commands</h1>
+<ul>
+<li>"pv"&nbsp;<a href="http://www.catonmat.net/blog/unix-utilities-pipe-viewer/">http://www.catonmat.net/blog/unix-utilities-pipe-viewer/</a></li>
+</ul>
+<p>&nbsp;</p>
+<h1>Learn from others</h1>
+<ul>
+<li><a href="http://trac.gerf.org/homedir">http://trac.gerf.org/homedir</a></li>
+<li><a href="http://willnorris.com/svn/homedir/packages/bash/">http://willnorris.com/svn/homedir/packages/bash/</a></li>
+<li><a href="http://willnorris.com/2005/03/bashrc">http://willnorris.com/2005/03/bashrc</a></li>
+<li><a href="http://www.reddit.com/r/programming/comments/697cu/bash_users_what_do_you_have_for_your_ps1/">http://www.reddit.com/r/programming/comments/697cu/bash_users_what_do_you_have_for_your_ps1/</a></li>
+</ul>
+#+end_export

@@ -1,0 +1,20 @@
+#+TITLE: Things to hack on
+#+DATE: <2013-05-20 Mon>
+
+#+begin_export html
+<ul>
+<li>Change all my passwords, everywhere.</li>
+<li>Listen to Security Now (http://twit.tv/sn) Mark says to do that.</li>
+<li>Get this:&nbsp;<a href="http://www.dartmouth.edu/comp/support/library/safecomputing/defenses/authentication/tokens/mac/">http://www.dartmouth.edu/comp/support/library/safecomputing/defenses/authentication/tokens/mac/</a>
+<p>working with my eToken and my Mac.</p>
+</li>
+<li>Shamir's Secret Sharing</li>
+<li>Data to Paper</li>
+<li>Paper to Data</li>
+<li>Move my old email to S3</li>
+<li>graph $/GiB for magnetic media and flash</li>
+<li>Install CrossOver on my laptop</li>
+<li>write post about:&nbsp;<a href="http://blogs.sun.com/jonathan/entry/you_have_to_stop_to">http://blogs.sun.com/jonathan/entry/you_have_to_stop_to</a></li>
+<li>Opt out of everything: <a href="http://www.worldprivacyforum.org/toptenoptout.html">http://www.worldprivacyforum.org/toptenoptout.html</a></li>
+</ul>
+#+end_export

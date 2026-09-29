@@ -1,0 +1,13 @@
+#+TITLE: Music to hack to
+#+DATE: <2013-05-20 Mon>
+
+#+begin_export html
+<ul>
+<li><a href="http://www.freebase.com/view/guid/9202a8c04000641f8000000002d611c9">Hackers</a> soundtrack</li>
+<li><a href="http://www.freebase.com/view/guid/9202a8c04000641f800000000387d970">Justice</a></li>
+<li><a href="http://www.freebase.com/view/en/daft_punk">Daft Punk</a></li>
+<li><a href="http://www.freebase.com/view/en/royksopp">Röyksopp</a></li>
+<li>&nbsp;</li>
+<li>...</li>
+</ul>
+#+end_export

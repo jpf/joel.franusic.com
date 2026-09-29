@@ -1,0 +1,32 @@
+#+TITLE: How to play Echolon (from RjDj) on your computer
+#+DATE: <2013-05-20 Mon>
+
+#+begin_export html
+<p>While it isn't quite as neat as running it on an iPhone, here is how to listen to the <a href="http://rjdj.me">RjDj</a> Echolon Scene on your computer:</p>
+<ol>
+    <li>Install <a href="http://puredata.info">Pure Data</a></li>
+    <li>Open Echolon
+    <ol>
+        <li>Do It Yourself
+        <ol>
+            <li>
+	        Download Echolon from the RjDj SVN repository
+                <p><span style="font-family: 'Courier New';">$ svn co <a href="http://rjdj.me/svn/rjdj_scenes/trunk/rjdj_scenes/Echolon.rj/">http://rjdj.me/svn/rjdj_scenes/trunk/rjdj_scenes/Echolon.rj/</a></span></p>
+            </li>
+            <li>Open the <span style="font-family: 'Courier New';">_main.pd</span> file in the <span style="font-family: 'Courier New';">Echolon.rj</span> directory with Pure Data</li>
+            <li>
+	        Modify the file so it looks like this: <br/><img src="/assets/Echolon.pd.png">
+                <p>(Thanks to my friend <a href="http://adamsmith.as">Adam Marshall Smith</a> who helped me with all of this)</p>
+            </li>
+        </ol>
+        </li>
+        <li>Or just download my modified copy: <a href="assets/Echolon.pd">Echolon.pd</a></li>
+    </ol>
+    </li>
+    <li>
+        Click the "compute audio" button in Pure Data:<br/>
+        <img src="/assets/Pd_compute_audio.png">
+    </li>
+    <li>Turn up the volume and enjoy!</li>
+</ol>
+#+end_export

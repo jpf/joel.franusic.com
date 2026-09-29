@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://joel.franusic.com/rss.xml"
+      title="RSS feed for https://joel.franusic.com/">
+<title>Ideal bash environment</title>
+<meta property="og:title" content="Ideal bash environment">
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://joel.franusic.com/Ideal_bash_environment.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Joël Franusic">
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+<link rel="shortcut icon" href="/favicon.ico">
+<style>
+  body { padding-top: 60px; }
+  #content { max-width: 760px; margin: 0 auto; padding: 0 20px 40px; }
+  #postamble { max-width: 760px; margin: 0 auto; padding: 0 20px; color: #777; }
+  .post-date { color: #999; font-size: 0.9em; margin-top: 1.5em; }
+  .post-title a { color: inherit; text-decoration: none; }
+  .taglist { margin-top: 2em; }
+  .tag, .tag-label { display: inline-block; margin-right: 6px; padding: 2px 8px;
+    background: #f5f5f5; border-radius: 4px; font-size: 0.85em; }
+  img { max-width: 100%; height: auto; }
+</style></head>
+<body>
+<div id="preamble" class="status"><div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="brand" href="/">Joël Franusic</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="/posts.html">Blog</a></li>
+          <li><a href="/archive.html">Archive</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></div>
+<div id="content">
+<div class="post-date">20 May 2013</div><h1 class="post-title"><a href="https://joel.franusic.com/Ideal_bash_environment.html">Ideal bash environment</a></h1>
+<h1>Custom Commands</h1>
+<ul>
+<li>pitch tent:&nbsp;expand on rndmcnlly's original idea to setup a temporary http server at '.'
+<ul>
+<li>In bash?&nbsp;<a href="http://paulbuchheit.blogspot.com/2007/04/webserver-in-bash.html">http://paulbuchheit.blogspot.com/2007/04/webserver-in-bash.html</a></li>
+<li>alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'&nbsp;&nbsp;(<a href="http://www.shell-fu.org/lister.php?id=54">#54</a>)</li>
+</ul>
+</li>
+<li>infect:&nbsp;given a remote ssh host, username and password, set up keys on that host as well as my custom bash environment</li>
+<li>calc:&nbsp;a calculator (bc wrapper?)</li>
+<li>portscan:&nbsp;<a href="http://www.shell-fu.org/lister.php?id=295">#295</a></li>
+<li><a href="http://www.commandlinefu.com/commands/browse">http://www.commandlinefu.com/commands/browse</a></li>
+<li>A twitter command line client might be pretty spiffy, especially if I could pipe to it.</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Prompt</h1>
+<ul>
+<li>Put the time in the prompt (last 4 digits of unixtime? gmt hr/min? ?)</li>
+<li>Put the return value of the last command in prompt (only if non-zero?)</li>
+<li>Show how long it took to run the last command (and perhaps what the last command was?)</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Include 3rd party commands</h1>
+<ul>
+<li>"pv"&nbsp;<a href="http://www.catonmat.net/blog/unix-utilities-pipe-viewer/">http://www.catonmat.net/blog/unix-utilities-pipe-viewer/</a></li>
+</ul>
+<p>&nbsp;</p>
+<h1>Learn from others</h1>
+<ul>
+<li><a href="http://trac.gerf.org/homedir">http://trac.gerf.org/homedir</a></li>
+<li><a href="http://willnorris.com/svn/homedir/packages/bash/">http://willnorris.com/svn/homedir/packages/bash/</a></li>
+<li><a href="http://willnorris.com/2005/03/bashrc">http://willnorris.com/2005/03/bashrc</a></li>
+<li><a href="http://www.reddit.com/r/programming/comments/697cu/bash_users_what_do_you_have_for_your_ps1/">http://www.reddit.com/r/programming/comments/697cu/bash_users_what_do_you_have_for_your_ps1/</a></li>
+</ul>
+<div class="taglist"></div></div>
+<div id="postamble" class="status"><hr>
+<footer><p>Copyright © 2013-2026 Joël Franusic</p></footer></div>
+</body>
+</html>
