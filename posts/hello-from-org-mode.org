@@ -1,8 +1,6 @@
 #+TITLE: Hello from org-mode
 #+DATE: <2026-09-29 Tue>
 
-* Hello from org-mode
-
 With some help from Claude, I've ported this website over from using
 Jekyll to using org-mode. My hope is that I can eventually stay inside
 of Emacs and never have to spend time figuring out why a build doesn't

@@ -5,14 +5,10 @@
 <description><![CDATA[Joël Franusic]]></description>
 <link>https://joel.franusic.com/</link>
 <atom:link href="https://joel.franusic.com/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Tue, 29 Sep 2026 01:26:48 -0700</lastBuildDate>
+<lastBuildDate>Wed, 30 Sep 2026 01:44:41 -0700</lastBuildDate>
 <item>
   <title><![CDATA[Hello from org-mode]]></title>
   <description><![CDATA[
-
-<div id="outline-container-orga1f983c" class="outline-2">
-<h2 id="orga1f983c">Hello from org-mode</h2>
-<div class="outline-text-2" id="text-orga1f983c">
 <p>
 With some help from Claude, I've ported this website over from using
 Jekyll to using org-mode. My hope is that I can eventually stay inside
@@ -23,8 +19,6 @@ work.
 <p>
 We will see, I suppose.
 </p>
-</div>
-</div>
 <div class="taglist"></div>]]></description>
   <link>https://joel.franusic.com/hello-from-org-mode.html</link>
   <guid>https://joel.franusic.com/hello-from-org-mode.html</guid>
@@ -6852,7 +6846,7 @@ Some of these sites aren't strictly REPLs since they don't maintain state, those
 
   </ul></li><li>Bloop:<ul>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
- 
+
   </ul></li><li><strong><a href="http://en.wikipedia.org/wiki/Brainfuck">brainfuck</a>:</strong><ul>
     <li><a href="http://ideone.com/">http://ideone.com/</a></li>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
@@ -6951,7 +6945,7 @@ Some of these sites aren't strictly REPLs since they don't maintain state, those
 
   </ul></li><li>LOLCODE:<ul>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
- 
+
   </ul></li><li><a href="http://en.wikipedia.org/wiki/L"><strong>Lua</strong></a><strong>:</strong><ul>
     <li><a href="http://codepad.org/">http://codepad.org/</a></li>
     <li><a href="http://ideone.com/">http://ideone.com/</a></li>
@@ -6963,7 +6957,7 @@ Some of these sites aren't strictly REPLs since they don't maintain state, those
 
   </ul></li><li>Move:<ul>
     <li><a href="http://repl.it/">http://repl.it/</a></li>
- 
+
   </ul></li><li><strong><a href="http://en.wikipedia.org/wiki/Nemerle">Nemerle</a>:</strong><ul>
     <li><a href="http://ideone.com/">http://ideone.com/</a></li>
 
